@@ -29,7 +29,7 @@ digitalWrite ohjaa OUTPUT-pinnin jännitettä. Se ottaa kaksi parametria: pinnin
 
 Avaa linkki ensiommäiseen harjoitukseen
 
-https://wokwi.com/projects/401573340205036545
+<a href="https://wokwi.com/projects/401573340205036545" target="_blank" rel="noopener noreferrer">Harjoitus 1</a>
 
 Tässä esimerkissä kaikki toiminnot suoritetaan setup funktiossa. Ensin asetetaan pinni numero ‘0’ OUTPUT-modeen. Tämän jälkeen asetetaan pinnin arvoksi HIGH. Tämä kytkee pinniin viiden voltin jännitteen, ja siihen kytketty vihreä LED valo syttyy
 

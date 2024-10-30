@@ -46,11 +46,10 @@ Tallennettua muuttujaa voidaan vertailla if-lauseessa.
 Tässä koodissa vihreä painiketta ohjaa vihreää lediä päälle ja pois (Koodia ajaessa voit hiiren klikkauksella painaa painiketta). Miten saisit sinisen painikkeen ohjaamaan lediä? entä miten saisit molemmat kytkimet toimimaan ledin ohjauksessa?
 
 Entä miten muuttaisit koodia siten, että ledi on norlaamisti päällä, mutta painike kytkee ledin pois päältä?
-
-https://wokwi.com/projects/405448875957636097
+<a href="https://wokwi.com/projects/405448875957636097" target="_blank" rel="noopener noreferrer">Harjoitus 5.1</a>
 
 ### Harjoitus 5.2
 
 Tässä koodissa on kävelijöille tarkoitetut liikennevalot. Kuinka painikkeen saisi asettamaan vihreän valon päälle hetkellisesti? (Vinkki: jos painike on painettu, laita punainen valo pois päältä, laita vihreä valo päälle, odota hetki, laita vihreä valo pois päältä ja punainen valo päälle)
 
-https://wokwi.com/projects/405451227158449153
+<a href="https://wokwi.com/projects/405451227158449153" target="_blank" rel="noopener noreferrer">Harjoitus 5.2</a>

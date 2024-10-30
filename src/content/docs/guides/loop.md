@@ -17,7 +17,7 @@ delay(1000); // Odotetaan 1000 millisekuntia
 
 Avaa harjoitus klikkaamalla linkkiä.
 
-https://wokwi.com/projects/401573536310785025
+<a href="https://wokwi.com/projects/401573536310785025" target="_blank" rel="noopener noreferrer">Harjoitus 2</a>
 
 Tässä harjoituksessa asetetaan pinni numero **0** OUTPUT modeen. **Loop**-funktiossa vaihdellaan pinniä **HIGH** ja **LOW** tilojen välillä, odottaen delay funtiossa 1000 millisekuntia. Tämä saa vihreän LED valon vilkkumaan.
 
@@ -33,6 +33,6 @@ Kuinka vihreä ja punainen valo saadaan vilkkumaan vuorotellen?
 
 Tässä simulaattorissa on lisätty myös keltainen valo. 
 
-https://wokwi.com/projects/401574802672996353
+<a href="https://wokwi.com/projects/401574802672996353" target="_blank" rel="noopener noreferrer">Tehtävä 2.3</a>
 
 Kirjoita **loop**-funtioon koodi, joka saa valot käyttäytymään kuten liikennevalot.

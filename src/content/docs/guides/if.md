@@ -35,7 +35,7 @@ if (muuttuja) {
 
 Tässä koodissa vain vihreä valo palaa, mutta punainen ei. Muuta koodia siten, että punainen valo palaa myös. Entä miten saat vihreän valon sammumaan?
 
-https://wokwi.com/projects/401650299392099329
+<a href="https://wokwi.com/projects/401650299392099329" target="_blank" rel="noopener noreferrer" >Harjoitus 4.1</a>
 
 # Vertailu ja totuusarvot
 
@@ -73,7 +73,7 @@ if (!totuus) {
 
 Tämä koodi ei toimi, mikään valo ei syty. Muuta vertailuja niin, että saat kaikki LED valot syttymään.
 
-https://wokwi.com/projects/401651191367555073
+<a href="https://wokwi.com/projects/401651191367555073" target="_blank" rel="noopener noreferrer">Harjoitus 4.2</a>
 
 # If-else rakenne
 
@@ -93,13 +93,13 @@ Jos ehto pitää paikkansa, suoritetaan ensimmäisten hakasulkujen välissä ole
 
 Muuta seuraavaa koodia niin, että punainen valo syttyy vihreän valon sijaan
 
-https://wokwi.com/projects/401653711677907969
+<a href="https://wokwi.com/projects/401653711677907969" target="_blank" rel="noopener noreferrer">Harjoitus 4.3</a>
 
 ### Harjoitus 4.4
 
 Tämä koodi laittaa vain vihreän valon päälle.  Miten saisit vihreän ja punaisen valon vilkkumaan vuorotellen muttamalla `ok` muuttujan arvoa loop-funkiton sisällä?
 
-https://wokwi.com/projects/401653822317366273
+<a href="https://wokwi.com/projects/401653822317366273" target="_blank" rel="noopener noreferrer">Harjoitus 4.4</a>
 
 # If - else if - else
 
@@ -131,4 +131,4 @@ if (ehto) {
 
 Tässä esimerkissä liikennevaloista toimivat vain vihreä ja punainen valo. Muuta koodia siten, että liikennevalot toimivat oikein myös keltaisen valon osalta. **Vinkki:** Kokeile luoda lisää arvoja muuttujalle tila, ja sytyttää LED valoja sen perusteella.
 
-https://wokwi.com/projects/401659312000234497 
+<a href="https://wokwi.com/projects/401659312000234497" target="_blank" rel="noopener noreferrer">Harjoitus 4.5</a>

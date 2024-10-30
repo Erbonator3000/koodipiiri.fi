@@ -38,7 +38,7 @@ Tässä koodissa käytetään `while` rakennetta toistojen laskemiseen. Kun tois
 
 Tässä koodissa vilkutetaan lediä kolme kertaa. Kuinka muuttaisit koodia, jotta ledi vilkkuisi viisi kertaa?
 
-https://wokwi.com/projects/405449905658573825
+<a href="https://wokwi.com/projects/405449905658573825" target="_blank" rel="noopener noreferrer">Harjoitus 6.1</a>
 
 # Odottaminen
 
@@ -57,7 +57,7 @@ Tässä koodissa pidetään lediä päällä niin kauan kuin pinni kolme on kytk
 
 Tässä koodissa pidetään lediä päällä niin kauan kuin painike on painettuna. Kuinka koodin saisi vilkuttamaan lediä silloin kun painike on painettuna?
 
-https://wokwi.com/projects/405450663678670849
+<a href="https://wokwi.com/projects/405450663678670849" target="_blank" rel="noopener noreferrer">Harjoitus 6.2</a>
 
 ### Harjoitus 6.3
 

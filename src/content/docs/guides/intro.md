@@ -19,4 +19,4 @@ Wokwi-alustan käyttö on suoraviivaista:
 
 Tästä linkistä pääset kokeilemaan wokwi-alustaa. jos saat simulaattorissa olevan vihreän LED-valon syttymään, olet onnistunut wokwin käytössä!
 
-https://wokwi.com/projects/401649697428654081
+<a href="https://wokwi.com/projects/401649697428654081" target="_blank" rel="noopener noreferrer">Siirry kokeilemaan Wokwi-alustaa</a>

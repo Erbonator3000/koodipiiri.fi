@@ -60,7 +60,7 @@ Muuttujien nimeämistä koskee muutama erikoissääntö
 
 Tässä esimerkissä delay funktion pituus on määritelty muuttujassa `tauko`
 
-https://wokwi.com/projects/401578519885705217
+<a href="https://wokwi.com/projects/401578519885705217" target="_blank" rel="noopener noreferrer">Tehtävä 3</a>
 
 ### Harjoitus 3.1
 
@@ -106,7 +106,7 @@ void loop() {
 
 Tämän esimerkin liikennevaloissa kaikki valot ovat päällä yhtä pitkään. Miten käyttäisit määriteltyjä muuttujia yhdessä delay funktioiden kanssa, jotta valot olisivat päällä eripituisia aikoja?
 
-https://wokwi.com/projects/405997287258007553
+<a href="https://wokwi.com/projects/405997287258007553" target="_blank" rel="noopener noreferrer">Harjoitus 3.4</a>
 
 Seuraavana vuorossa Ehtolauseet
 
