@@ -1,0 +1,56 @@
+---
+title: INPUT ja digitalRead
+description: Opas arduino ohjelmoinnin alkeisiin.
+sidebar:
+  order: 7
+---
+
+# pinMode(0, INPUT)
+
+Tähän asti harjoituksien arduino on toiminut täysin itsenäisesti, mutta kuten jo aikaisemmin kursilla mainittiin, Arduino voi myös reagoida ulkoiseen ohjaukseen. Yksinkertaisimmillaan tämä tapahtuu `digitalRead()`  funktion kautta.
+
+```c
+void setup() {
+  pinMode(3, INPUT); // Asetetaan pinni '3' INPUT tilaan
+}
+
+void loop() {
+  int kytkin = digitalRead(3); // Luetaan pinnin 3 arvo ja tallennetaan se 'kytkin' muuttujaan
+}
+```
+
+Jotta digitalRead toimisi oikein, on luettava pinni ensin asetettava `INPUT` modeen. Tämä tarkoittaa, että pinniä ei voi ohjata `digitalWrite()` funktiolla, vaan sen arvo on luettavissa `digitalRead()` funktiolla.
+
+# Funktion paluuarvo
+
+Tähän asti käyttämämme funktiot, `pinMode()`, `digitalWrite()` ja `delay()` ovat ainoastaan ohjanneet Arduinon toimintaa. Nyt esitelty `digitalRead()`  poikkeaa näistä siten, että sitä käytetään tiedon saamiseen Arduinolta. Tällöin funktio “palauttaa” pyydetyn arvon. Palautettu arvo tallenetaan muuttujaan ja sitä voidaan käyttää myöhemmin esimerkiksi if-lauseessa.
+
+```c
+int kytkin = digitalRead(3); // Luetaan pinnin 3 arvo ja tallennetaan se 'kytkin' muuttujaan
+```
+
+Tässä koodissa luetaan pinnin 3 jännite käyttäen `digitalRead()` funktiota. digitalRead ottaa parametrikseen luettavan pinnin numeron, ja palauttaa `HIGH`  mikäli jännite on kytketty ja `LOW`  mikäli jännitettä ei ole kytketty.
+
+```c
+if (kytkin == HIGH) { // Vertaillaan muuttuja 'kytkin arvoa'
+    digitalWrite(0, HIGH); // Kytketään vihreä ledi päälle
+  } else if (kytkin == LOW) {
+    digitalWrite(0, LOW); // Kytketään vihreä ledi pois
+  }
+```
+
+Tallennettua muuttujaa voidaan vertailla if-lauseessa.
+
+### Harjoitus 5.1
+
+Tässä koodissa vihreä painiketta ohjaa vihreää lediä päälle ja pois (Koodia ajaessa voit hiiren klikkauksella painaa painiketta). Miten saisit sinisen painikkeen ohjaamaan lediä? entä miten saisit molemmat kytkimet toimimaan ledin ohjauksessa?
+
+Entä miten muuttaisit koodia siten, että ledi on norlaamisti päällä, mutta painike kytkee ledin pois päältä?
+
+https://wokwi.com/projects/405448875957636097
+
+### Harjoitus 5.2
+
+Tässä koodissa on kävelijöille tarkoitetut liikennevalot. Kuinka painikkeen saisi asettamaan vihreän valon päälle hetkellisesti? (Vinkki: jos painike on painettu, laita punainen valo pois päältä, laita vihreä valo päälle, odota hetki, laita vihreä valo pois päältä ja punainen valo päälle)
+
+https://wokwi.com/projects/405451227158449153
