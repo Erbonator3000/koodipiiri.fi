@@ -6,9 +6,6 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Koodipiiri.fi',
-			social: {
-				github: 'https://github.com/withastro/starlight', // TODO
-			},
 			sidebar: [
 				{
 					label: 'Arduino vasta alkajille',
