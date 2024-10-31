@@ -3,9 +3,10 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://koodipiiri.fi',
 	integrations: [
 		starlight({
-			title: 'Koodipiiri.fi',
+      title: 'Koodipiiri.fi',
 			sidebar: [
 				{
 					label: 'Arduino vasta alkajille',

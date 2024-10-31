@@ -4,6 +4,7 @@ description: Opas arduino ohjelmoinnin alkeisiin.
 sidebar:
   order: 3
 ---
+import { LinkCard } from '@astrojs/starlight/components';
 
 Arduinon fyysisiä sähköisiä liitoksia kutsutaan pinneiksi. Näiden avulla Arduino voi ohjata ulkoisia komponentteja ja lukea jännitteen tai ulkoiset sensorien arvoja. Arduino simulaattorissa pinnit löytyvät Arduino ohjelmointialustan reunoilta, ja pinnien numerot ovat kirjoitettuna pinnien viereen.
 
@@ -29,7 +30,7 @@ digitalWrite ohjaa OUTPUT-pinnin jännitettä. Se ottaa kaksi parametria: pinnin
 
 Avaa linkki ensiommäiseen harjoitukseen
 
-<a href="https://wokwi.com/projects/401573340205036545" target="_blank" rel="noopener noreferrer">Harjoitus 1</a>
+<LinkCard title="Harjoitus 1" href="https://wokwi.com/projects/401573340205036545" target="_blank" rel="noopener noreferrer" />
 
 Tässä esimerkissä kaikki toiminnot suoritetaan setup funktiossa. Ensin asetetaan pinni numero ‘0’ OUTPUT-modeen. Tämän jälkeen asetetaan pinnin arvoksi HIGH. Tämä kytkee pinniin viiden voltin jännitteen, ja siihen kytketty vihreä LED valo syttyy
 

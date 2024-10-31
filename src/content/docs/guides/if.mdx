@@ -4,6 +4,7 @@ description: Opas arduino ohjelmoinnin alkeisiin.
 sidebar:
   order: 6
 ---
+import { LinkCard } from '@astrojs/starlight/components';
 
 Tähän mennessä kirjoittamamme ohjelmat ovat olleet toiminnaltaan lineaarisia. Jotta ohjelmamme pystyy reagoimaan muutoksiin ympäristössään, tarvitaan ehtolauseita. Ehtolauseet asettavat nimensä mukaisesti ehdon, jonka perusteella ohjelman suoritus haarautuu kahdeksi tai useammaksi poluksi.
 
@@ -35,7 +36,7 @@ if (muuttuja) {
 
 Tässä koodissa vain vihreä valo palaa, mutta punainen ei. Muuta koodia siten, että punainen valo palaa myös. Entä miten saat vihreän valon sammumaan?
 
-<a href="https://wokwi.com/projects/401650299392099329" target="_blank" rel="noopener noreferrer" >Harjoitus 4.1</a>
+<LinkCard title="Harjoitus 4.1" href="https://wokwi.com/projects/401650299392099329" target="_blank" rel="noopener noreferrer" />
 
 # Vertailu ja totuusarvot
 
@@ -54,9 +55,9 @@ Arduino-ohjelmoinnissa (ja muissakin ohjelmointikielissä) numeeristen arvojen v
 | == | Yhtäsuuruus. Tulos on `true`, jos luvut ovat yhtäsuuret, muuten `false`. **Huomaa kaksi `==` merkkiä peräkkäin!** |
 | --- | --- |
 | > | Suurempi kuin. Tulos on `true`, jes merkin vasemmalla puolella oleva arvo on suurempi kuin oikealla puolella oleva. |
-| < | Pienempi kuin. Tulos on `true` jos merkin vasemmalla puolella oleva arvo on pienempi kuin oikealla puolella oleva. |
+| \< | Pienempi kuin. Tulos on `true` jos merkin vasemmalla puolella oleva arvo on pienempi kuin oikealla puolella oleva. |
 | >= | Suurempi tai yhtäsuuri kuin. Tulos on `true`, jos vasemmalla puolella oleva arvo on suurempi kuin oikealla puolella oleva, tai arvot ovat yhtäsuuret. |
-| <= | Pienempi tai yhtäsuuri kuin. Tulos on `true`, jos vasemmalla puolella oleva arvo on pienempi kuin oikealla puolella oleva, tai arvot ovat yhtäsuuret. |
+| \<= | Pienempi tai yhtäsuuri kuin. Tulos on `true`, jos vasemmalla puolella oleva arvo on pienempi kuin oikealla puolella oleva, tai arvot ovat yhtäsuuret. |
 | != | Erisuuruus. Tulos on `true`, jos arvot ovat erisuuret. |
 
 Jos halutaan ottaa totuusarvoisen muuttujan käänteisarvo arvo, voidaan käyttää `!` merkintää.
@@ -73,7 +74,7 @@ if (!totuus) {
 
 Tämä koodi ei toimi, mikään valo ei syty. Muuta vertailuja niin, että saat kaikki LED valot syttymään.
 
-<a href="https://wokwi.com/projects/401651191367555073" target="_blank" rel="noopener noreferrer">Harjoitus 4.2</a>
+<LinkCard title="Harjoitus 4.2" href="https://wokwi.com/projects/401651191367555073" target="_blank" rel="noopener noreferrer" />
 
 # If-else rakenne
 
@@ -93,13 +94,15 @@ Jos ehto pitää paikkansa, suoritetaan ensimmäisten hakasulkujen välissä ole
 
 Muuta seuraavaa koodia niin, että punainen valo syttyy vihreän valon sijaan
 
-<a href="https://wokwi.com/projects/401653711677907969" target="_blank" rel="noopener noreferrer">Harjoitus 4.3</a>
+<LinkCard title="Harjoitus 4.3" href="https://wokwi.com/projects/401653711677907969" target="_blank" rel="noopener noreferrer" />
+
 
 ### Harjoitus 4.4
 
 Tämä koodi laittaa vain vihreän valon päälle.  Miten saisit vihreän ja punaisen valon vilkkumaan vuorotellen muttamalla `ok` muuttujan arvoa loop-funkiton sisällä?
 
-<a href="https://wokwi.com/projects/401653822317366273" target="_blank" rel="noopener noreferrer">Harjoitus 4.4</a>
+<LinkCard title="Harjoitus 4.4" href="https://wokwi.com/projects/401653822317366273" target="_blank" rel="noopener noreferrer" />
+
 
 # If - else if - else
 
@@ -131,4 +134,5 @@ if (ehto) {
 
 Tässä esimerkissä liikennevaloista toimivat vain vihreä ja punainen valo. Muuta koodia siten, että liikennevalot toimivat oikein myös keltaisen valon osalta. **Vinkki:** Kokeile luoda lisää arvoja muuttujalle tila, ja sytyttää LED valoja sen perusteella.
 
-<a href="https://wokwi.com/projects/401659312000234497" target="_blank" rel="noopener noreferrer">Harjoitus 4.5</a>
+<LinkCard title="Harjoitus 4.5" href="https://wokwi.com/projects/401659312000234497" target="_blank" rel="noopener noreferrer" />
+
