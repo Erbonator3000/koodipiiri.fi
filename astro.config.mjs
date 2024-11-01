@@ -12,6 +12,10 @@ export default defineConfig({
 					label: 'Arduino vasta alkajille',
 					autogenerate: { directory: 'basic' },
 				},
+				{
+					label: 'Pyöräty pyörimään',
+					autogenerate: { directory: 'motors' },
+				},
 			],
 		}),
 	],
