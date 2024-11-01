@@ -13,7 +13,7 @@ export default defineConfig({
 					autogenerate: { directory: 'basic' },
 				},
 				{
-					label: 'Pyöräty pyörimään',
+					label: 'Pyörät pyörimään',
 					autogenerate: { directory: 'motors' },
 				},
 			],

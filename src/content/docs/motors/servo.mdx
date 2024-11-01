@@ -1,0 +1,118 @@
+---
+title: Servomoottori
+description: Opas moottoreihin ja servoihin.
+sidebar:
+  order: 1
+---
+import { LinkCard } from '@astrojs/starlight/components';
+
+Servomoottorit ovat moottoreita, joden asentoa voi ohjata. Koodissa tämä tarkoittaa sitä, että servolle annetaan asento, ja
+servomoottori pyrkii pitämään tämän asennon. Tämä on erityisen kätevää, jos halutaan rakentaa esimerkiksi robotteja, jotka
+liikkuvaty tarkasti tietyllä tavalla.
+
+## Servo-kirjasto
+
+Jotta arduino osaisi ohjata servomoottoreita, sen tarvitsee asettaa itsensä lähettämään servojen käyttämää signaalia. Tämä
+signaali on ajoituksiltaan tarkka, ja sen toteutus on aloittelijoille monimutkainen. Onneksi ohjelmoinnissa kaikkea ei tarvitse
+tehdä itse, ja servojen ohjaamiseen tarvittava koodi onkin annettu kaikille arduinokäyttäjille valmiina. Tälläistä valmista
+koodipakettia kutsutaan *kirjastoksi*.
+
+### Kirjaston lisääminen Wokwi-alustalla
+
+Wokwi editorissa projektiin voi lisätä koodi-ikkunan välilehdeltä *Library manager*. Näkymän oikeassa yläkulmassa olevasta
+*+*-merkistä voidaan hakea ja lisätä kirjastoja. Servo-kirjaston lisääminen onistuu hakemalla sanalla "servo" ja valitsemalla
+oikea kirjasto. Kuten saatat huomata, Servojen ohjaamiseen on kehitetty monia kirjastoja, joista valita. Tämän kurssin
+tarkoitukseen käytetään kuitenkin yksinkertaisesti "Servo" kirjastoa. Esimerkeissä ja tehtävissä kirjasto on jo valmiiksi lisätty,
+joten tästä ei tarvitse jatkossa huolehtia. Omia projekteja tehdessä on kuitenkin hyvä huomioida kirjastojen lisäämisen tarve.
+
+## Servo-kirjaston käyttö
+
+Jotta lisätty servo kirjasto saadaan käyttöön, on se lisättävä koodiin
+
+```c
+#include <Servo.h> // Lisätään servokirjasto käyttöön
+```
+
+Tässä `#include` tarkoittaa kirjaston lisäystä ja `Servo.h` on kirjaston nimi.
+
+Tämän jälkeen voidaan luoda uusi servo tyyppinen muuttuja
+
+```c
+Servo heiluriservo; // Luodaan uusi servo-muuttuja
+```
+
+Tässä `Servo` on muuttujan tyyppi, kuten aiemmin käytetyt `int` ja `boolean`, ja `heiluriservo` on muuttujan nimi. Kuten `int`
+tyyppiset muuttujat, myös `Servo` tyyppiset muuttujat voi nimetä haluamallaan tavalla. Servo tyyppinen muuttuja tarjoaa
+funktioita, joilla voimme ohjata, miten servo toimii.
+
+Servon ohjausta varten Arduinolle on kerrottava `setup()` funktiossa, mihin pinniin servo on kytketty.
+
+```c
+void setup() {
+  heiluriservo.attach(9); // Ohjataan servo käyttämään pinniä numero 9
+}
+```
+
+Servo tyyppisellä muuttujalla on siis käytössään funktio `.attach()`, joka otttaa parametrikseen pinnin numeron, johon servo on
+kytketty. Asettamalla piste servon muuttujan nimen ja funktion väliin, voimme ohjata juusi haluamaamme servoa.
+
+## Servon kääntely
+
+Servon ohjaaminen suoritetaan ´Servo´ muuttujan funktiolla `.write()´. ´.write()´ funktio ottaa parametrikseen servon halutun
+asennon asteina välillä 0-180 astetta.
+
+```c
+void loop() {
+  heiluriservo.write(180); // Käännetään servo maksimiasentoon
+  delay(1000); // Odotetaan yksi sekunti
+  heiluriservo.write(0); // Käännetään servo minimiasentoon
+  delay(1000); // Odotetaan yksi sekunti
+}
+```
+
+## Harjoitus 1
+Tässä harjoituksessa koodi servon kääntelyyn ylhäältä alas on valmiina.
+
+<LinkCard title="Harjoitus 1" href="https://wokwi.com/projects/413334178642552833" target="_blank" rel="noopener noreferrer" />
+
+### Tehtävä 1.1
+
+Kuinka saisit servon kääntymään ylös ja oikealle?
+
+### Tehtävä 1.2
+
+Entä' kuinka saisit servon kääntymään ylös, oikealle, ja sitten alas?
+
+## Useampi Servomoottori
+
+Peruskurssin liikennevaloharjoituksissa Arduinoon oli kytketty useampi led-valo. Myös servoja voi kykeä useita. Tällöin jokaiselle
+servolle luodaan oma muuttuja.
+
+```c
+Servo servo1; // Luodaan uusi servo-muuttuja
+Servo servo2; // Luodaan uusi servo-muuttuja
+```
+
+Nämä liitetään pinneihin yksi kerrallaan.
+
+```c
+void setup() {
+  servo1.attach(9); // Ohjataan servo käyttämään pinniä numero 9
+  servo2.attach(10); // Ohjataan servo käyttämään pinniä numero 10
+}
+```
+
+Ja ohjaus tapahtuu servojen omien `write()` funktioiden kautta.
+
+
+```c
+  servo1.write(0); // Käännetään servo minimiasentoon
+  servo2.write(0); // Käännetään servo minimiasentoon
+```
+
+## Harjoitus 2
+
+<LinkCard title="Harjoitus 2" href="https://wokwi.com/projects/413347982205377537" target="_blank" rel="noopener noreferrer" />
+
+### Tehtävä 2.1
+Tässä harjoituksessa servot liikkuvat eritahtiin. Kuinka saisit ne liikkumaan samaan tahtiin?
