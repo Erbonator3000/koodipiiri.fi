@@ -10,7 +10,7 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: 'Arduino vasta alkajille',
-					autogenerate: { directory: 'guides' },
+					autogenerate: { directory: 'basic' },
 				},
 			],
 		}),
