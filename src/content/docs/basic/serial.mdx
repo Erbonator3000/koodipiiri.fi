@@ -6,7 +6,7 @@ sidebar:
 ---
 import { LinkCard } from '@astrojs/starlight/components';
 
-Joskus, ohjelman toiminnan vaiheista olisi hyödullistä saada tietoa silloin, kun ohjelma on toiminnassa. Arduinolla tämä on
+Joskus, ohjelman toiminnan vaiheista olisi hyödyllistä saada tietoa silloin, kun ohjelma on toiminnassa. Arduinolla tämä on
 mahdollista käyttäen sarjaporttia. Sarjaportti mahdollistaa Arduinon ja tietokoneen välisen kommunikaation Arduinon USB kaapelin
 välityksellä, eli Arduino voi lähettää viestejä tietokoneelle. Näin voidaan tarkkailla esimerkiksi muuttujien arvoja ohjelman
 toiminnan aikana.
@@ -50,7 +50,7 @@ Kuinka saisit sarjaportin tulostamaan numeron *2*?
 Serial.println("Tämä tulostuu."); // Sarjaportti tulostaa "Tämä tulostuu."
 ```
 
-Tyhjä `Serial.println()` funktio tulostaa tyjän rivin. Tätä voi käyttää esimerkiksi, jos haluaa erotella `loop()` funktion ajojen
+Tyhjä `Serial.println()` funktio tulostaa tyhjän rivin. Tätä voi käyttää esimerkiksi, jos haluaa erotella `loop()` funktion ajojen
 väliset tulostukset toisistaan. 
 
 # Muuttujien tulostaminen
@@ -74,11 +74,12 @@ boolean totuus = true; // Luodaan boolean tyyppinen muuttuja ja asetetaan sille 
 Serial.println(totuus); // Sarjaportti tulostaa "1"
 ```
 
-Tästä voidaan huomata, että `boolean` tyyppinen muuttuja tallentaa arvonsa itseasiassa numerona.
+Tästä voidaan huomata, että `boolean` tyyppinen muuttuja tallentaa arvonsa itseasiassa numerona. Booleanilla on siis kaksi arvoa,
+`true` (1) ja `false` (0).
 
 ## Harjoitus 2
 Tässä harjoituksessa tulostetaan `boolean` tyyppisen muuttujan arvoa.
-<LinkCard title="Harjoitus 1" href="https://wokwi.com/projects/413615269949071361" target="_blank" rel="noopener noreferrer" />
+<LinkCard title="Harjoitus 2" href="https://wokwi.com/projects/413615269949071361" target="_blank" rel="noopener noreferrer" />
 
 ### Tehtävä 2.1
 `boolean` tyyppinen muuttuja tulostetaan numerona `1`, kun sen totuusarvo on `true`. Tutki, minkä numeroarvon se saa, kun
