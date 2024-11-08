@@ -1,0 +1,90 @@
+---
+title: Sarjaportti
+description: Opas arduino ohjelmoinnin alkeisiin.
+sidebar:
+  order: 9
+---
+import { LinkCard } from '@astrojs/starlight/components';
+
+Joskus, ohjelman toiminnan vaiheista olisi hyödullistä saada tietoa silloin, kun ohjelma on toiminnassa. Arduinolla tämä on
+mahdollista käyttäen sarjaporttia. Sarjaportti mahdollistaa Arduinon ja tietokoneen välisen kommunikaation Arduinon USB kaapelin
+välityksellä, eli Arduino voi lähettää viestejä tietokoneelle. Näin voidaan tarkkailla esimerkiksi muuttujien arvoja ohjelman
+toiminnan aikana.
+
+# Serial.println
+
+Jotta Arduino kykenisi lähettämään viestejä, täytyy sen sarjaportti ottaa käyttöön. Tämä onnistuu `setup()` funktiossa.
+
+```c
+void setup() {
+  Serial.begin(115200);
+}
+```
+
+`Serial.begin` funktio siis alustaa Arduinon käyttämään sarjaporttia. `115200` taas kertoo, mitä sarjaportin nopeutta käytetään.
+
+Viestien lähettäminen suoritetaan `Serial.println` funktiolla.
+
+```c
+void loop() {
+  Serial.println(1);
+  delay(1000);
+}
+```
+
+Tässä Lähetetään numeroa yksi toistuvasti kerran sekuntissa
+
+## Harjoitus 1
+
+Tässä harjoituksessa oleva koodi alustaa sarjaportin käyttöön, ja tulostaa kerran sekuntissa numeron yksi.
+
+<LinkCard title="Harjoitus 1" href="https://wokwi.com/projects/413430920100286465" target="_blank" rel="noopener noreferrer" />
+
+### Tehtävä 1.1
+Kuinka saisit sarjaportin tulostamaan numeron *2*?
+
+# Tekstin tulostaminen
+`Serial.println()` pystyy tulostamaan myös tekstiä.
+
+```c
+Serial.println("Tämä tulostuu."); // Sarjaportti tulostaa "Tämä tulostuu."
+```
+
+Tyhjä `Serial.println()` funktio tulostaa tyjän rivin. Tätä voi käyttää esimerkiksi, jos haluaa erotella `loop()` funktion ajojen
+väliset tulostukset toisistaan. 
+
+# Muuttujien tulostaminen
+`Serial.println` pystyy tulostamaan myös muuttujien arvoja. Tämä on erityisen hyödyllistä, kun halutaan tarkkailla suoritettavan
+ohjelman tilaa sen suorituksen aikana.
+
+```c
+int muuttuja = 1; // Luodaan muuttuja ja asetetaan sille arvoksi 1
+Serial.println(muuttuja); // Sarjaportti tulostaa "1"
+muuttuja = 2; // Uudelleen asetetaan muuttujan arvoksi 2
+Serial.println(muuttuja); // Sarjaportti tulostaa "2"
+```
+
+Myös `float` ja `boolean` tyyppisiä muuttujia voi tulostaa `println()`funktiolla.
+
+```c
+float desimaaliluku = 1.1; // Luodaan float tyyppinen muuttuja ja asetetaan sille arvoksi 1.1
+Serial.println(desimaaliluku); // Sarjaportti tulostaa "1.1"
+
+boolean totuus = true; // Luodaan boolean tyyppinen muuttuja ja asetetaan sille arvoksi true
+Serial.println(totuus); // Sarjaportti tulostaa "1"
+```
+
+Tästä voidaan huomata, että `boolean` tyyppinen muuttuja tallentaa arvonsa itseasiassa numerona.
+
+## Harjoitus 2
+Tässä harjoituksessa tulostetaan `boolean` tyyppisen muuttujan arvoa.
+<LinkCard title="Harjoitus 1" href="https://wokwi.com/projects/413615269949071361" target="_blank" rel="noopener noreferrer" />
+
+### Tehtävä 2.1
+`boolean` tyyppinen muuttuja tulostetaan numerona `1`, kun sen totuusarvo on `true`. Tutki, minkä numeroarvon se saa, kun
+totuusarvo on `false`.
+
+### Tehtävä 2.2
+Kuinka saisit ohjelman tulostamaan "true", kun muuttujan arvo on `true` ja "false" kun muuttujan arvo on `false`? 
+
+**Vinkki!** käytä `if` ja `else` rakenteita, vertaile totuusarvoja `totuus == true`, ja käytä tekstin tulostusta.
