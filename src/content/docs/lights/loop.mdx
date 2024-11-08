@@ -1,0 +1,40 @@
+---
+title: For-ohjaus
+description: Opas Neopixel valoihin
+sidebar:
+  order: 1
+---
+import { LinkCard } from '@astrojs/starlight/components';
+
+NeoPixeleille tyypillinen ominaisuus on yksittäisen ledin ohjaaminen järjestysnumeron perusteella. Jos nauhassa on paljon ledejä,
+käy työlääksi kirjoittaa jokaiselle ledille oma komento.
+
+```c
+  nauha.setPixelColor(0, color); // Aseta väri ensimmäiseen neopixeliin
+  nauha.setPixelColor(1, color); // Aseta väri toiseen neopixeliin
+  nauha.setPixelColor(2, color); // Aseta väri kolmanteen neopixeliin
+  nauha.setPixelColor(3, color); // Aseta väri neljänteen neopixeliin
+  // jne...
+```
+
+[For](/basic/for)-rakenteen yhteydessä opimme, miten voimme helposti käydä läpi lukulistoja. Voimme hyödyntää tätä myös
+NeoPixelien ohjaaisessa.
+
+```c
+for (int i = 0; i <= 7; i++) { // muuttuja i saa arvot välillä 0..7, sopiva 8 ledin ohjaamiseen
+  nauha.setPixelColor(i, color); // Aseta väri i:n osoittamaan neopixeliin
+}
+```
+
+## Harjoitus 1
+
+Tässä harjoituksessa Arduinoon on kytketty kahdeksan Neopixel ledin nauha. Koodi asettaa neljä ensimmäistä lediä punaiseksi
+käyttäen for-rakennetta.
+
+<LinkCard title="Harjoitus 1" href="https://wokwi.com/projects/416596058540675073" target="_blank" rel="noopener noreferrer" />
+
+### Tehtävä 1.1
+Kuinka saisit kaikki ledit syttymään? entä kuinka saisit ainoastaan neljä viimeistä lediä syttymään?
+
+### Tehtävä 1.2
+Käytä for-rakennetta ja `delay()` funktiota ja koeta saada jokainen ledi syttymään vuorotellen.
