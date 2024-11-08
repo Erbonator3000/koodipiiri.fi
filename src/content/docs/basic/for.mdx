@@ -1,0 +1,51 @@
+---
+title: For toistorakenne
+description: Opas arduino ohjelmoinnin alkeisiin.
+sidebar:
+  order: 10
+---
+import { LinkCard } from '@astrojs/starlight/components';
+
+`While`-rakenne on kätevä, kun halutaan toistaa koodia kunnes joku ehto toteutuu. Usein kuitenkin halutaan
+suorittaa koodia tietty määrä toistoja peräkkäin. Tällöin voidaan käyttää `for`-rakennetta
+
+```c
+for (int laskuri = 0; laskuri < 5; laskuri++) {
+	// tehdään asioita niin kauan kuin ehto on voimassa
+}
+```
+
+`For`-lause on siis toiminnaltaan hieman monimutkaisempi kuin `while`-rakenne. `for` alustuksessa onkin kolme osiota, jotka on
+eroteltu puolipisteellä `;`.
+
+* `int laskuri = 0` Ensimmäinen osio alustaa muuttujan, jolla lasketaan suoritettujen kierrosten määrää. Tämä suoritetaan vain
+  kerran, ennen kuin for-toistorakenne alkaa.
+* `laskuri < 5` Toinen osio asettaa ehdon `for` toistolle. Ehto tarkistetaan ennen jokaista toistoa ja `for` rakenteen koodi
+  toistetaan vain, jos ehto antaa arvon `true` (kuten `if` rakenteessa). Mikäli ehto antaisi arvoksi `false`, siirrytään
+  suorittamaan koodia `for` rakenteen hakasulkujen jälkeen. Tässä esimerkissä ehtona on, että laskurin arvo on pienempi kuin *5*.
+* `laskuri++` Viimeinen osio on vastuussa laskurin arvon muuttamisesta, ja se suoritetaan jokaisen `for`-toistokerran jälkeen.
+  Tässä `++` tarkoittaa "Lisää muuttujan arvoa yhdellä", eli samaa kuin `laskuri = laskuri + 1`.
+
+### Harjoitus 1
+
+Tässä koodissa vilkutetaan lediä kolme kertaa. Kuinka muuttaisit koodia, jotta ledi vilkkuisi viisi kertaa?
+
+<LinkCard title="Harjoitus 6.1" href="https://wokwi.com/projects/413383374889592833" target="_blank" rel="noopener noreferrer" />
+
+## Laskurin käyttö
+
+`For`-rakenteessa käytetty laskuri on siis ihan tavallinen muuttuja, jota voidaan käyttää `for`-rakenteen sisällä. Tästä on
+hyötyä, kun halutaan tietää, monesko toisto on parhaillaan menossa.
+
+```c
+for (int laskuri = 0; laskuri < 5; laskuri++) {
+  Serial.println(laskuri); // Käytetään sarjaporttia tulostamiseen
+  delay(1000);
+}
+```
+
+### Harjoitus 2
+
+Tässä koodissa tulostetaan luvut nollasta neljään. Kuinka saisit koodin tulostamaan luvut 1 - 5?
+
+<LinkCard title="Harjoitus 6.1" href="httpshttps://wokwi.com/projects/414017031181612033" target="_blank" rel="noopener noreferrer" />
