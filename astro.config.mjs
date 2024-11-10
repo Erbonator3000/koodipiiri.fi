@@ -16,6 +16,10 @@ export default defineConfig({
 					label: 'Pyörät pyörimään',
 					autogenerate: { directory: 'motors' },
 				},
+				{
+					label: 'Sensorit',
+					autogenerate: { directory: 'sensors' },
+				},
 			],
 		}),
 	],

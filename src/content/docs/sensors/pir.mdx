@@ -1,0 +1,56 @@
+---
+title: PIR liikesensori
+description: Opas sensoreihin.
+sidebar:
+  order: 1
+---
+import { LinkCard } from '@astrojs/starlight/components';
+
+PIR-sensori, eli *Passive InfraRed* (passiivinen infrapuna), on liikesensori, joka perustuu infrapunasäteilyn mittaamiseen. Se
+havaitsee ihmisen kehon lämpösäteilyn muutokset ympäristössään. Kun joku astuu sensorin havaintoalueelle, lämpösäteilyn taso
+muuttuu ja sensori tunnistaa liikkeen. Tämä tekee PIR-sensorista erinomaisen valinnan esimerkiksi valaistuksen,
+hälytinjärjestelmien tai automaattisten ovien ohjaamiseen.
+
+## Pir sensorin arvon lukeminen
+PIR-sensori toimii antamalla signaalin aina, kun se havaitsee liikettä. Kun liike lakkaa, myös sensorin antama signaali lakkaa.
+Arduinokoodissa PIR-sensorin tila voidaan lukea `digitalRead`-funktiolla.
+
+```c
+void setup() {
+  Serial.begin(115200);
+  pinMode(8, INPUT); // Asetetaan Arduinon pinni 8 INPUT modeen
+}
+
+void loop() {
+  int sensorinArvo = digitalRead(8); // Luetaan PIR sensorin arvo pinnistä 8
+  Serial.println(sensorinArvo); // Tulostetaan PIR-sensorin arvo sarjaporttiin (tulostaa 0 tai 1)
+  delay(500); // Odotetaan 500 millisekuntia
+}
+```
+
+Tätä koodia ajaessa huomataan, että sarjaporttiin tulostuu `0`, kun liikettä ei ole havaittu, ja `1` kun liikettä on havaittu.
+
+## Harjoitus 1
+
+Tässä harjoituksessa luetaan PIR-sensorin arvo ja tulostetaan se sarjaportilla.
+<LinkCard title="Harjoitus 1" href="https://wokwi.com/projects/414020715650555905" target="_blank" rel="noopener noreferrer" />
+
+### Tehtävä 1.1
+
+Kuinka saisit Sarjaportin tulostamaan "Liikettä havaittu", kun PIR-sensori havaitsee liikettä?
+
+## Harjoitus 2
+Tässä harjoituksessa on valmiiksi PIR-sensori ja LED-valo
+<LinkCard title="Harjoitus 2" href="https://wokwi.com/projects/414025898325208065" target="_blank" rel="noopener noreferrer" />
+
+### Tehtävä 2.1
+Kuinka saisit LED-valon syttymään vain, kun PIR-sensori havaitsee liikettä?
+
+## Harjoitus 3
+Tässä harjoituksessa on valmiiksi PIR-sensori ja servomoottori. Tätä tehtävää varten suositellaan lukemaan [opastus
+servomoottoreiden käyttöön](/motors/servo).
+<LinkCard title="Harjoitus 2" href="https://wokwi.com/projects/414064954853652481" target="_blank" rel="noopener noreferrer" />
+
+### Tehtävä 3.1
+Kuinka saisit ohjelmoitua automaattisen oven servomoottorilla siten, että PIR-sensorin havaitessa liikettä servomoottori kääntyy
+auki-asentoon (180), on auki hetken aikaa, ja kääntyy sitten takaisin kiinni-asentoon (0)?
