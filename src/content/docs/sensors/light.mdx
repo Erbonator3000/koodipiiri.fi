@@ -1,0 +1,46 @@
+---
+title: Valoisuussensori
+description: Opas sensoreihin.
+sidebar:
+  order: 2
+---
+import { LinkCard } from '@astrojs/starlight/components';
+
+Valoisuussensorin avulla voidaan havaita valoa, ja reagoida sen mukaisesti. Näin voitaisiin ohjata esimerkiksi verhoja auringon
+valon perusteella, tai laittaa yövalo päälle pimeässä huoneessa.
+
+## Valoisuussensorin käyttö ON/OFF havaitsimena
+Arduinon kanssa käytettävä valoisuussensori on kytketty erilliseen ohjauspiirriin, joka pystyy tuottamaan ON/OFF tyylisen
+signaalin siitä, onko valo päällä vai pois. Tämän lukeminen onnistuu helposti `digitalRead` funktion avulla.
+
+```c
+void setup() {
+  Serial.begin(115200);
+  pinMode(8, INPUT); // Asetetaan Arduinon pinni 8 INPUT modeen
+}
+
+void loop() {
+  int sensorinArvo = digitalRead(8); // Luetaan valoisuussensorin arvo
+  Serial.println(sensorinArvo); // Tulostetaan valoisuussensorin arvo sarjaporttiin
+  delay(500); // Odotetaan 500 millisekuntia
+}
+```
+
+Kun valoisuuden määrää muutetaan, huomataan, että kirkkaassa valossa sensori antaa arvon `0` ja himmeässä valossa tai pimeässä
+arvon `1`.
+
+## Harjoitus 1
+Tässä harjoituksessa tulostetaan valoisuussensorin arvo.
+
+<LinkCard title="Harjoitus 1" href="https://wokwi.com/projects/414025655486507009" target="_blank" rel="noopener noreferrer" />
+
+### Tehtävä 1.1
+Kuinka saisit tulostumaan "valoisaa", kun valoisuussensori havaitsee valoa ja "pimeää" kun sensori ei havaitse valoa.
+
+## Harjoitus 2
+Tässä harjoituksessa on valosensorin lisäksi LED valo
+
+<LinkCard title="Harjoitus 1" href="https://wokwi.com/projects/414148759431371777" target="_blank" rel="noopener noreferrer" />
+
+### Tehtävä 1.1
+Kuinka saisit LED-valon syttymään vain, kun valoisuussensori ei havaitse valoa?
