@@ -1,0 +1,104 @@
+---
+title: Sarjaportti, Serial.read()
+description: Opas arduino ohjelmoinnin alkeisiin.
+sidebar:
+  order: 11
+---
+import { LinkCard } from '@astrojs/starlight/components';
+
+# Serial.read()
+
+Sarjaportista voi lähettää viestejä myös arduinolle. Tällöin käytetään komentoja `Serial.available()` ja `Serial.read()`.
+
+```c
+if (Serial.available() > 0) { // Tarkastetaan, onko sarjaportissa jotain luettavaa
+  char merkki = Serial.read(); // Luetaan yksi merkki sarjaportista
+  Serial.print(merkki); // Tulostetaan luettu merkki takaisin sarjaporttiin
+}
+```
+
+`Serial.available()` tarkistaa, kuinka monta kirjainta tai merkkiä sarjaportissa odottaa lukemista. `if (Serial.available() > 0)`
+tarkistaa siis, että luettavaa on enemmän kuin nolla kappaletta. `char merkki = Serial.read();` taas puolestaan lukee
+sarjaportista yhden merkin ja tallentaa sen `merkki`-nimiseen muuttujaan. Muuttujan tyyppi on tässä tapauksessa `char`, mik'ä
+tarkoittaa yhtä kirjainta. `Serial.print(merkki);` taas tulostaa merkin takaisin sarjaporttiin, jolloin se ilmestyy taas Arduinon
+sarjaportitulostimeen.
+
+Huomioitavaa on, että tässä käytettiin funktiota `Serial.print()`, kun aiemmin on käytetty funktiota `Serial.println()`. Näistä
+jälkimmäinen vaihtaa riviä tulostuksen jälkeen, kun taas ensimmäinen tulostaa ainoastaan yhden merkin kerrallaan.
+Jos `Serial.print()`-funktiolla halutaan tulostaa rivinvaihto, voidaan käyttää rivinvaihto-erikoismerkkiä `"\n"`. `\` tarkoittaa,
+että seuraava kirjain kuvaa erikoismerkkiä ja `n` taas tulee sanoista **new line**, eli uusi rivi.
+
+## Harjoitus 3
+Tässä harjoituksessa Arduino ottaa vastaan viestejä sarjaportista ja toistaa ne takaisin sarjaporttiin. Kuinka saisit arduinon
+tavaamaan sanat, eli asettamaan `"-"` merkin kirjainten välille?
+
+<LinkCard title="Harjoitus 3" href="https://wokwi.com/projects/414889543301532673" target="_blank" rel="noopener noreferrer" />
+
+## Harjoitus 4
+
+Tässä harjoituksessa Arduino on lukittu salaisella salasanalla. Lue koodia ja yritä arvata salasana kirjoittamalla sarjaporttiin.
+Tässä hrjoituksessa ei ole tarkoitus muuttaa koodia, tai täysin ymmärtää sen toimintaa. Tärkeää on yrittää analysoida, mitä koodi
+saattaisi tehdä, ja miten omaa arvausta voisi testata.
+
+<LinkCard title="Harjoitus 4" href="https://wokwi.com/projects/414890448886565889" target="_blank" rel="noopener noreferrer" />
+
+# Sarjaportti komennot
+
+Sarjaporttia voidaan käyttää Arduinon käyttöliittymänä, jos halutaan esimerkiksi ohjata arduinoa tietokoneella pyörivästä
+ohjelmasta. Tällöin voidaan määrittää haluttuja avainsanoja, joilla arduinoa voi ohjata ja reagoida niihin.
+
+## char ja String tyypit
+Aiemmin kurssilla on käsitelty erityyppisiä muuttujia `int`, `float`, `boolean`. Nämä kuvaavat joko numeroita, lukuja tai
+totuusarvoja. Näiden lisäksi joskus tarvitaan myöskin kirjaimia ja merkkijonoja.
+
+## char
+`char`-tyyppiset muuttujat voivat tallentaa yhden kirjaimen.
+
+```c
+char kirjain = 'a';
+```
+
+Tässä tallennetaan kirjain `a` muuttujaan nimeltä `kirjain`. Huomioitavaa on, että `char`-tyyppisten muuttujien kanssa käytetään
+yksittäistä `'` heittomerkkiä.
+
+## Harjoitus 5
+Tässä harjoituksessa Arduino ottaa vastaan komennon `1`, ja laittaa silloin LED valon päälle. Kuinka saisit Arduinon laittamaan
+LED valon pois päältä komennolla `0`?
+
+<LinkCard title="Harjoitus 5" href="https://wokwi.com/projects/414894812924858369" target="_blank" rel="noopener noreferrer" />
+
+## String
+`String` tyyppinen muuttuja voi puolestaan sisältää monta kirjainta peräkkäin, merkkijonon.
+
+```c
+String lause = "Tämä on string tyyppinen muuttuja";
+```
+
+Tässä tallennetaan kokonainen lause `String`-tyyppiseen muuttujaan. Huomioitavaa on, että muista muuttujatyypeistä poiketen
+`String` kirjoitetaan aina isolla. Lisäksi muuttujan arvoa asetettaessa käytetään `"` tuplaheittomerkkejä.
+
+### readStringUntil
+`String`-tyyppisen muuttujan lukeminen sarjaportista onnistuu `Serial.readStringUntil()`-funktiolla.
+
+```c
+String komento = readStringUntil('\n');
+```
+
+`Serial.readStringUntil()`-funktio ottaa parametrikseen `char`-tyyppisen muuttujan, eli kirjaimen, johon asti sarjaporttia
+luetaan, ja tallentaa luetun merkkijonon muuttujaan. Kuten jo aiemmin on esitelty, `\n` on rivinvaihtoa tarkoittava erikoismekki.
+
+### String muuttujien vertailu
+Usein halutaan lukea sarjaportista tiettyjä komentoja ja toimia niiden mukaan. Tällöin tarvitsee tarkistaa, mikä komento ollaan
+saatu. `Strin`-tyyppisten muuttujien vertailuun voi käyttää `==` operaattoria.
+
+```c
+String muuttuja = "moi";
+boolean totuus = muuttuja == "moi"; // Tämä on tosi
+```
+
+## Harjoitus 6
+
+Tässä harjoituksessa Arduino ottaa vastaan komentona värin ja laittaa sen mukaisen LED-valon päälle. Keltainen komen to kuitenkin
+puuttuu vielä. Toteuta se.
+
+<LinkCard title="Harjoitus 6" href="https://wokwi.com/projects/414897633852002305" target="_blank" rel="noopener noreferrer" />
