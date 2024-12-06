@@ -1,0 +1,91 @@
+---
+title: Kirjastojen käyttäminen
+description: Opas arduino ohjelmoinnin alkeisiin.
+sidebar:
+  order: 12
+---
+import { LinkCard } from '@astrojs/starlight/components';
+
+
+Tähän mennessä olemme kirjoittaneet kaiken tarvitsemamme koodin itse. Joskus voi olla kuitenkin hyödyllistä lainata jonkun muun
+kirjoittamaa koodia, mikäli se sopii omaan projektiin. satunnaista hakemista ja kopioimista ei kuitenkaan kannata harrastaa, vaan
+kannttaa tukeutua muiden julkaisemiin **kirjastoihin**.
+
+
+## Mikä on kirjasto?
+Kirjasto on tiettyä tarkoitusta varten tehty ohjelmakoodi, joka on paketoitu helposti käytettävään muotoon. Kirjasto tarjoaa
+esimerkiksi funktioita ja uudentyyppisiä muuttujia, joiden avulla ohjelmassa voi keskittyä oman ohjelman logiikkaan.
+
+Tälläkin kurssilla olemme itseasiassa käyttäneet jo kirjastoja. Tosin ne ovat arduino-ympäristössä käytössä automaattisesti, eikä
+niitä tarvitse erikseen lisätä.
+
+```c
+void setup() {
+  Serial.begin(115200);
+}
+```
+
+Esimerkiksi tässä koodinpätkässä käytämme `Serial` nimistä kirjastoa. Sen avulla meidän ei tarvitse miettiä, miten vaikkapa
+numerot muutetaan sarjaporttiin tulostettavaan muotoon.
+
+Tässä esimerkissä `Serial`-kirjasto tarjoaa meille funktion nimeltä `begin()`, joka käynnistää sarjaportin käyttöön tietyllä
+nopeudella. Myös `Serial.println()` on `Serial`-kirjaston tarjoama funktio. kirjastojen tarjoamia funktioita käytetään siis
+laittamalla `.` kirjaston ja sen tarjoaman funktion väliin.
+
+## Kirjastojen käyttäminen
+
+Arduino ympäristö tarjoaa muutamia sisäänrakennettuja kirjastoja, joita ei tarvitse erikseen lisätä projektiin. Riittää, kun ne
+otetaan käyttöön koodissa käyttämällä `#include`-komentoa.
+
+```c
+#include <SoftwareSerial.h>
+```
+
+Tässä otetaan käyttöön kirjasto nimeltä `SoftwareSerial`, joka mahdollistaa uuden sarjaportin lisäämisen Arduinon muihin
+pinneihin. Kirjastojen nimet päättyvät aina `.h` merkkeihin, ja ne on suljettu `< >` merkkien väliin.
+
+SoftwareSerial toimii hiukan eri tavalla kuin aiemmin käyttämämme sarjaportti, sillä se täytyy alustaa käyttöön luomalla
+`SoftwareSerial`-tyyppinen muuttuja.
+
+```c
+SoftwareSerial sarjaportti(8, 9); // Luodaan uusi SoftwareSerial objekti nimellä sarjaportti pinneihin 8 ja 9
+```
+
+Tässä siis luodaan uusi `SoftwareSerial`-tyyppinen muuttuja, joka käyttää pinnejä 8 ja 9 viestiensä lähettämiseen ja
+vastaanottamiseen. Koska käytämme kirjastoa, meidän ei tarvitse välttämättä tietää, miten sarjaportti toimii, kunhan osaamme
+valita tarvittavat pinnit oikein. Tässä tapauksessa pinniä 8 käytetään lähettämiseen, ja pinniä 9 vastaanottamiseen.
+
+Muilta osin `SoftwareSerial`-sarjaporttia käytetään kuten tavallista sarjaporttia
+
+```c
+void setup() {
+  sarjaportti.begin(115200); // Käynnistetään sarjaportti
+}
+
+void loop() {
+  sarjaportti.println("moikkelis"); // Kirjoitetaan viesti sarjaporttiin
+  delay(1000);
+}
+```
+
+### Harjoitus 1
+
+Tässä harjoituksessa Arduinoon on kytketty ulkoinen sarjaporttivastaanotin, johon lähetämme viestejä `SoftwareSerial`-kirjastolla.
+
+<LinkCard title="Harjoitus 1" href="https://wokwi.com/projects/414885809789160449" target="_blank" rel="noopener noreferrer" />
+
+Kokeile lähettää sarjaporttiin muita viestejä ja katso, kuinka ne tulostuvat toisen piirin sarjaporttiin.
+
+## Kirjaston lisääminen Wokwi-alustalla
+
+Arduinon sisäänrakennettujen kirjastojen lisäksi saatavilla on kasoittain kirjastoja eri tarkoituksiin. Wokwi-alustalla näiden
+lisääminen onnistuu Library manager välilehdeltä. Täältä voi hakea kirjastoja eri tarkoituksiin, ja myös tarkastella
+harjoituksissa käytettyjä kirjastoja. Useimmissa tämän kurssin harjoituksista tarvittavat kirjastot esimerkiksi sensorien
+lukemiseen on lisätty valmiiksi, mutta on hyödyllistä omia projekteja ajatellen tietää, kuinka tämä tehdään.
+
+### Harjoitus 2
+
+Tässä harjoituksessa käytetään `Button` nimistä kirjastoa, joka helpottaa painikkeiden käyttämistä koodissa. Sitä ei kuiternkaan
+ole lisätty library managerissa. Lisää se ja kokeile, kuinka kirjaston funktiot toimivat.
+
+<LinkCard title="Harjoitus 2" href="https://wokwi.com/projects/414905558544065537" target="_blank" rel="noopener noreferrer" />
