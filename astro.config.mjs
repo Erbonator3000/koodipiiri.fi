@@ -19,6 +19,10 @@ export default defineConfig({
 				{
 					label: 'Sensorit',
 					autogenerate: { directory: 'sensors' },
+        },
+        {
+					label: 'Valot vilkkumaan',
+					autogenerate: { directory: 'lights' },
 				},
 			],
 		}),

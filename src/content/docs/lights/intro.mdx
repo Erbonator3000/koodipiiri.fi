@@ -1,0 +1,83 @@
+---
+title: NeoPixel alkeet
+description: Opas NeoPixel valoihin
+sidebar:
+  order: 1
+---
+import { LinkCard } from '@astrojs/starlight/components';
+
+Tervetuloa Arduino-ohjelmointikurssin Valoisaan osaan! Tässä osiossa opimme ohjelmoimaan NeoPixel ledinauhoja.
+
+Tämän kurssin esitietoina oletetaan *Arduino vasta alkajille* peruskurssin suorittaminen.
+
+Kurssi toteutetaan Wokwi-ohjelmointialustalla. Wokwi alustan käytöstä löydät ohjeet [Arduino vasta alkajille](/basic/intro)
+osiosta.
+
+Tavoitteena on oppia ohjaamaan NeoPixel ledinauhoja, asettamaan värejä ja luomaan erilaisia efektejä.
+
+## Mikä on NeoPixel?
+
+NeoPixel ledinauhat ovat värillisiä ledinauhoja, joissa jokaisen ledin väriä ja kirkkautta voi hallita erikseen. Tämän
+mahdollistavat ledivaloihin integroitu prosessori, joka vastaanottaa ja lähettää väritietoja nauhassa lediltä toiselle, Näin
+nauhalle voidaan antaa käsky hallita tietyn ledin väriä ja kirkkautta.
+
+NeoPixel-ledinauhoja voi käyttää erityisesti älyvalaistuksessa, koristevalaistuksessa ja valotaiteessa.
+
+## NeoPixel ohjelmoinnin alkeet
+
+Ensimmäinen askel NeoPixel-nauhojen ohjelmoinnissa on lisätä Adafruit_NeoPixel-kirjasto, joka tarjoaa kaikki tarvittavat työkalut
+nauhojen hallintaan. Lisää kirjastojen käytöstä voi lukea kurssin osiosta [Kirjastojen käyttäminen](/basic/kirjastot/).
+
+```c
+#include <Adafruit_NeoPixel.h> // Lisää NeoPixel kirjasto käyttöön
+```
+
+Seuraavaksi luodaan uusi `Adafruit_NeoPixel`tyyppinen muuttuja ja annetaan sille nimeksi `nauha`.
+
+```c
+Adafruit_NeoPixel nauha(16, 6, NEO_GRB + NEO_KHZ800); // Luo uusi Adafruit_NeoPixel tyyppinen muuttuja
+```
+
+Tässä uuden muuttujan luominen tapahtuu funktiolla, joka ottaa parametrikseen NeoPixel-ledien määrän (16 kappaletta), pinnin, johon nauha on
+kytketty (pinni 6) ja nauhakohtaiset parametrit. Nauhakohtaisista parametreista ei tarvitse nyt välittää, mutta eri valmistajilta ostetuissa
+ledinauhoissa voidaan tarvita eri arvoja. Tässä esimerkissä on käytetty yleisimmin toimivaa variaatiota. 
+
+`Setup()` funktiossa alustetaan NeoPixel ledinauha käyttöön.
+
+```c
+void setup() {
+  nauha.begin(); // Aloita NeoPixelin käyttö
+  nauha.setBrightness(255); // Aseta NeoPixelin kirkkaus maksimiin 
+  uint32_t color = nauha.Color(255,   0,   0); // Luo uusi väri arvoilla (punainen, vihreä, sininen)
+  nauha.setPixelColor(0, color); // Aseta väri ensimmäiseen NeoPixeliin
+  nauha.show(); // Lähetä värit nauhalle 
+}
+```
+
+* `.begin()` funktio käynnistää nauhan.
+* `.setBrightness(255)` asettaa NeoPixel ledinauhan kirkkauden. Kirkkauden arvon voi asettaa välille 0-255. Tässä ledinauha
+  asetetaan maksimikirkkaudelle.
+* `uint32_t vari = nauha.Color(255,   0,   0);` Luo uint32_t tyyppisin muuttujan, joka kuvaa NeoPixel nauhaan asetettavaa väriä
+  - `uint32_t` tyyppi, kuten `int`, on tyyppi johon voidaan tallentaa suuria positiivisia kokonaislukuja. Tässä sitä käytetään
+    tallentamaan väriarvoja RGB-muodossa.
+  - `vari` on väri-muuttujan nimi.
+  - `nauha.Color(punainen, vihreä, sininen)` on funktio, joka yhdistää RGB, eli punaisen, vihreän, ja sinisen värin NeoPixelille sopivaksi arvoksi.
+    Funktion parametrit ovat siis punainen, vihreä ja sininen. Näitä yhdistelemällä voidaan luoda myös muita värejä, esimerkiksi
+    violetti luotaisiin komennolla `nauha.Color(255, 0, 255)`.
+* `nauha.setPixelColor(0, vari);` asettaa aiemmin luodun värin nauhaan.
+  - ensimmäinen parametri kertoo, monettako NeoPixel-lediä ohjataan. Ohjelmoinnissa usein erilaisten listojen laskenta aloitetaan
+    nollasta ykkösen sijaan.
+  - Toinen parametri on väri, joka NeoPixel lediin halutaan asettaa.
+* `.show()` lähettää nauhan arvon Arduinosta ledeille.
+
+## Harjoitus 1
+
+Tässä harjoituksessa Arduinoon on kytketty kahdeksan NeoPixel ledin nauha. Koodi asettaa nauhan ensimmäisen ledin punaiseksi
+<LinkCard title="Harjoitus 1" href="https://wokwi.com/projects/413379025494551553" target="_blank" rel="noopener noreferrer" />
+
+### Tehtävä 1.1
+Kuinka saisit myös nauhan muut ledit syttymään? Entä miten saisit joka toisen ledin syttymään? Vinkki: Tässä voidaan käyttää
+[For](/basic/for)-rakennetta.
+
+### Tehtävä 1.2
+Kuinka saisit ledit syttymään punaisen sijasta vihreiksi tai sinisiksi? Entä miten saisit aikaan keltaisen värin?
