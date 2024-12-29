@@ -1,0 +1,55 @@
+---
+title: DHT22 Lämpötila- ja kosteusanturi
+description: Opas sensoreihin.
+sidebar:
+  order: 3
+---
+import { LinkCard } from '@astrojs/starlight/components';
+
+
+## DHT22-sensorin arvon lukeminen
+Sensorin lukeminen suoritetaan erityistä protokollaa käyttäen, ja tästä syystä helpointa on käyttää valmista kirjastoa. Tämän
+osion harjoituksiin kirjasto on lisätty valmiiksi.
+
+Koodissa sensorin käyttöä varten tarvittava kirjasto on lisättävä `#include` komennolla. Lisää kirjastojen käytöstä voi lukea
+kurssin osiosta [Kirjastojen käyttäminen](/basic/kirjastot/)
+
+```c
+#include <DHT22.h> // Lisätään sensorikirjasto
+```
+
+Sensorille tarvitsee myös luoda oma muuttuja jonka kautta sitä voi käyttää.
+
+```c
+DHT22 sensori(8); // Luodaan sensorille muuttuja
+```
+
+Sensorin lukeminen onnistuu sensorimuuttujan tarjoamien funktioiden avulla. 
+```c
+float lampotila = sensori.getTemperature(); // Luetaan lämpötila sensorista
+Serial.println(lampotila); // Tulostetaan luettu lämpötila
+```
+
+DHT22 tarjoaa käyttöön seuraavanlaisia funktioita:
+
+* `getRawData()` Antaa sensorilta raakadataa anysoiotavaksi 64-bittisessä muodossa
+
+
+* `getRawStrData()` Antaa raakadataa `String`-tyyppisessä muodossa.
+* `getHumidity()` Antaa ilmankosteuden `float`-tyyppisessä muodossa.
+* `getTemperature(bool M = true)` Antaa lämpötilan `float`-tyyppisessä muodossa. Tämä funktio ottaa parametrikseen boolean arvon `M`. Mikäli M on `ture`, palauttaa kirjasto lukeman celsiusasteina. Jos M on `false` annetaan lämpötila Farenheitteina. Jos M:n arvoa ei ole annettu annetaan lämpötila celsiusasteina
+* `convertCtoF(float)` Apufunktio, jolla voidaan muuttaa Celsiusasteinen lämpötila Farenheit-lämpötilaksi
+* `convertFtoC(float)` Apufunktio, jolla voidaan muuttaa Farenheit-lämpötila Celsiusasteiksi
+* `getHeatIndex(float t, float h, bool isCelsius = true)` Apufunktio, joka laskee lämpötilaindeksin perustuen lämpötilaan ja ilmankosteuteen. Parametreja ovat `t = lämpötila`, `h = ilmankosteus` ja `isCelsius = lämpötilan tyyppi`
+* `getLastError()` Funktio, jolla saadaan tietoa sensorin toiminnasta, mikäli sensorikirjasto on havainnut jotain ongelmia ym.
+* `debug()` Funktio, jolla kirjaston kehittäjä saa lisätietoja kirjaston toiminnasta
+
+Kirjasto siis tarjoaa paljon erilaisia funktioita. Näistä oleellisimmat ovat `getHumidity()` ja `getTemperature()`.
+
+## Harjoitus 1
+
+Tässä harjoituksessa luetaan DHT22-sensorin lämpötila-arvo.
+<LinkCard title="Harjoitus 1" href="https://wokwi.com/projects/414837115181906945" target="_blank" rel="noopener noreferrer" />
+
+### Tehtävä 1.1
+Muuta koodia niin, että luetaankin ilmakosteus.
