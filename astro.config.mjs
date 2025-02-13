@@ -1,30 +1,40 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightSidebarTopics from 'starlight-sidebar-topics'
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://koodipiiri.fi',
-	integrations: [
-		starlight({
+  integrations: [
+    starlight({
+      credits: true,
       title: 'Koodipiiri.fi',
-			sidebar: [
-				{
-					label: 'Arduino vasta alkajille',
-					autogenerate: { directory: 'basic' },
-				},
-				{
-					label: 'Pyörät pyörimään',
-					autogenerate: { directory: 'motors' },
-				},
-				{
-					label: 'Sensorit',
-					autogenerate: { directory: 'sensors' },
-        },
-        {
-					label: 'Valot vilkkumaan',
-					autogenerate: { directory: 'lights' },
-				},
-			],
-		}),
-	],
+      plugins: [
+        starlightSidebarTopics([
+          {
+            label: 'Arduino vasta-alkajille',
+            link: '/arduino/basic/intro',
+            items: [
+              {
+                label: 'Arduino vasta alkajille',
+                autogenerate: { directory: '/arduino/basic' },
+              },
+              {
+                label: 'Pyörät pyörimään',
+                autogenerate: { directory: '/arduino/motors' },
+              },
+              {
+                label: 'Sensorit',
+                autogenerate: { directory: '/arduino/sensors' },
+              },
+              {
+                label: 'Valot vilkkumaan',
+                autogenerate: { directory: '/arduino/lights' },
+              },
+            ],
+          },
+        ]),
+      ],
+    }),
+  ],
 });
