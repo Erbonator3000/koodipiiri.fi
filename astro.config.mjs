@@ -33,6 +33,28 @@ export default defineConfig({
               },
             ],
           },
+          {
+            label: 'Mikro-ohjainlevyn ohjelmointia Grove Kitin kanssa',
+            link: '/grove-kit/intro/arduino_grove-kit',
+            items: [
+              {
+                label: 'Johdatus mikro-ohjainohjelmointiin',
+                autogenerate: { directory: '/grove-kit/intro' },
+              },
+              {
+                label: 'Ohjelmistojen asennus',
+                autogenerate: { directory: '/grove-kit/setup' },
+              },
+              {
+                label: 'Harjoitukset',
+                autogenerate: { directory: '/grove-kit/exercises' },
+              },
+              {
+                label: 'Lopuksi',
+                autogenerate: { directory: '/grove-kit/wrapup' },
+              },
+            ],
+          },
         ]),
       ],
     }),

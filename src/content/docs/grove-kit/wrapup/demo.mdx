@@ -1,0 +1,50 @@
+---
+title: Plug and Play demo-ohjelman uudelleenlautaus
+description: Ohjeet alkuperäisen demo-ohjelman uudelleen lataamiseksi.
+sidebar:
+  order: 2
+---
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+Jos haluat palata alkuperäiseen Plug and Play Demoon, jonka kanssa Grove-kit tuli, lataa ja asenna 
+zip-tiedosto alla tämän sivun ohjeiden mukaisesti.
+
+1.  Siirry Seeedstudion Grove-kitin Wiki-sivulle alla olevasta linkistä.
+<LinkCard 
+    title="Grove Beginner Kit for Arduino (Seeedstudio)" 
+    href="https://wiki.seeedstudio.com/Grove-Beginner-Kit-For-Arduino/#resources" 
+    target="_blank"
+    rel="noopener noreferrer" />
+2.  Napsauta kohtaa **5. Initial Arduino Firmware Demo** ladataksesi alkuperäisen demo-ohjelman 
+zip-tiedoston.
+
+Seuraa sitten IDE:si mukaisia ohjeita asennuksen jatkamiseksi.
+
+## Arduino IDE
+
+Arduino IDE:llä demo-ohjelman uudelleenlataus jatkuu seuraavasti:
+
+1.  Avaa Arduino IDE ja siirry kohtaan Tiedosto > Asetukset, tarkista *Sketchbook*-kansion 
+tiedostopolku eli *Sketchbook location*.
+2.  Avaa *Sketchbook*-kansio tietokoneesi Resurssienhallinnassa (Windows) tai Finderissa (macOS).
+3.  Siirrä vaiheessa 2 ladattu zip-tiedosto tähän kansioon, ja pura (*unzip*) se sinne. Kun olet 
+valmis, sinun pitäisi nähdä kansio nimeltä *Grove_Starter_Kit*. **Huomaa!** Jos tämä uusi 
+*Grove_Starter_Kit*-kansio on edelleen toisen kansion sisällä, siirrä se pois niin, että 
+*Sketchbook*-kansio sisältää *Grove_Starter_Kit* ja *libraries*-kansiot.
+4.  *Sketchbook*-kansiossasi pitäisi myös olla *libraries*-kansio. Kopioi 
+*Grove_Starter_Kit*-kansiosta kansiot *Grove_BMP280-master*, 
+*Grove_Temperature_And_Humidity_Sensor*, *MsTimer2*, *Seeed_Arduino_LIS3DHTR-master* ja *U8g2* 
+omaan *libraries*-kansioosi. **Huomaa!** Sinulla saattaa jo olla *U8g2*-kansio 
+*libraries*-kansiossa, jolloin sinun ei tarvitse kopioida sitä.
+5.  Kun olet kopioinut kansiot, voit kaksoisnapsauttaa `Grove_Starter_Kit.ino`-tiedostoa avataksesi 
+Arduino-koodin alkuperäistä demoa-ohjelmaa varten ja ladataksesi sen Grove Kit -levyllesi 
+tavalliseen tapaan.
+
+:::caution[Virheitä latauksen aikana?]
+Tarkista että olet valinnut oikean COM-portin, Arduino Uno -levytyypin ja 
+”AVRISP MKII”-ohjelmoijan Arduino IDE:n asetuksista. Tarkista myös, että kirjastot, jotka kopioit 
+*Grove_Starter_Kit*-kansiosta *libraries*-kansioon kopioitiin onnistuneesti.
+:::
+
+Voit nyt käyttää alkuperäistä demo-ohjelmaa ja myös muokata sen sketsiä halutessasi.

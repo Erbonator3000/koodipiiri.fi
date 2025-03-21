@@ -1,0 +1,72 @@
+---
+title: Duino App
+description: Ohjeet Duino App-sivuston käyttöönottoon.
+sidebar:
+  order: 2
+---
+
+import DuinoAppIDE from '../../../../assets/images/duinoapp_IDE.svg';
+
+Tämä sivu sisältää Duino Appin käyttöönottoon, Arduinoon yhdistämiseen Duino Appissa ja 
+Arduino-kirjastojen asentamiseen.
+
+:::caution[Duino App toimii ainoastaan Chrome-selaimessa]
+Jos sinulla ei ole Chromea käytössä, suosittelemme ohjelmointia Arduino IDE:ssä Duino Appin sijaan. 
+Ota Arduino IDE käyttöön [näiden ohjeiden](/grove-kit/setup/arduino_ide/) mukaisesti.
+:::
+
+Duino App on selaimessa toimiva [IDE](/grove-kit/intro/programming/#integroitu-ohjelmistoympäristö), 
+jonka käyttöönotto on hyvin yksinkertaista. Siirry Duino Appiin [täältä](https://duino.app/#/), ja 
+luo kurssille oma projekti seuraavasti:
+
+1.  Napsauta *Code*-nappia yläpalkin vasemmassa reunassa.
+2.  Luo uusi projekti napsauttamalla keskellä olevaa *Create a new project* -nappia, ja anna 
+projektille haluamasi nimi. Napsauta sitten *Create*-nappia luodaksesi projektin.
+    * Vaihtoehtoisesti voit avata olemassaolevan projektin vasemman reunan projektivalikosta.
+3. IDE:hen avautuu esimerkkikooditiedosto, jota lähdemme pian muokkaamaan. Voit luoda projektiisi
+uusia tiedostoja tai kansioita haluamaasi järjestykseen vasemman reunan hakemistossa.
+
+Projektin luomisen jälkeen sinun pitäisi nähdä alla olevan kuvan kaltainen ikkuna.
+
+<img src={DuinoAppIDE.src} 
+  alt="Duino Appin keskeisimmät toiminnallisuudet" 
+  style="width: 100%; margin: 50 auto;"/>
+
+## Arduinoon yhdistäminen
+
+Arduinoon yhdistetään IDE:n alapalkin avulla, kuten yllä olevasta kuvasta voit nähdä. Käytännössä
+yhdistäminen tapahtuu seuraavasti:
+1.  Jos *Arduino Uno* -kohdassa lukee jotakin muuta, napsauta sitä avataksesi valikon 
+  kehityslevymallin valitsemiseksi. Hae valikosta **Arduino UNO**, ja napsauta sitä mallin 
+  valitsemiseksi.
+    * Siirry takaisin projektiin napsauttamalla *Code*-nappia yläpalkin vasemmassa reunassa.
+2. Napsauta sitten *Select device* -kohtaa, joka avaa **duino.app haluaa yhdistää sarjaporttiin** 
+  (*duino.app wants to connect to a serial port*) -pikkuikkunan. 
+    * Valitse **CP2102N USB to UART Bridge Controller** ja napsauta Muodosta yhteys (*Connect*).
+    * Nyt alapalkissa pitäisi lukea levyn mallin vasemmalla puolella *Selected*.
+
+## Arduino-kirjastojen asennus
+
+**Kirjastot** (englanniksi *library*) ovat kokoelma jo toteutettuja toimintoja, joita voimme 
+hyödyntää erilaisissa projekteissa. Tämän kurssin suorittamiseen tarvitsemme Arduino-kirjastoa 
+nimeltään UKESF Sixth-Formers, joka sisältää joukon toimintoja, joiden avulla helpotamme 
+Grove-kitin käyttöä. Tällä kurssilla tarvittavat kirjastot ladataan seuraavasti:
+
+1. Napsauta *Libraries*-nappia yläpalkissa.
+2. Hae kirjasto kirjoittamalla **UKESF Sixth-Formers** hakupalkkiin.
+3. Napsauta *Add*-nappia kirjaston kohdalla.
+4. Hyvin todennäköisesti kirjasto tarvitsee projektista vielä puuttuvia **riippuvuuksia** 
+(englanniksi *dependencies*), ja IDE huomauttaa sinua siitä. Napsuttele "Missing Dependencies" 
+-laatikon kirjastot läpi ja asenna ne *Add*-napilla, kunnes laatikko katoaa.
+    * Riippuvuuksien asennuksen jälkeen *Project Libraries* -väliotsikon alla tulisi näkyä 
+    kirjastot UKESF Sixth-Formers, Adafruit AHTX0, Adafruit BusIO, Adafruit SH110X, 
+    Adafruit GFX Library ja Adafruit Unified Sensor.
+    * Jos "Missing Dependencies" -laatikkoa ei ilmestynyt, nämä riippuvuudet oli jo asennettu
+    projektiin.
+
+:::note[Kirjastoista ja projekteista]
+Huomaathan, että Duino Appissa kirjastot liittyvät aina tiettyyn projektiin, ja uuden projektin
+luodessasi joudut asentamaan kirjastot ja niiden mahdolliset riippuvuudet uudelleen. 
+:::
+
+Siinä kaikki, nyt voit siirtyä tekemään harjoituksia!

@@ -1,0 +1,115 @@
+---
+title: Ohjelmointi
+description: Johdatus kurssilla käytettävään ohjelmointiympäristöön.
+sidebar:
+  order: 2
+---
+
+import ArduinoIDE from '../../../../assets/images/Arduino_IDE.svg';
+import DuinoAppIDE from '../../../../assets/images/duinoapp_IDE.svg';
+import DuinoAppConsole from '../../../../assets/images/duinoapp_console.svg';
+
+Perehdytään seuraavaksi lyhyesti mikro-ohjainohjelmoinnin perusteisiin. Jos olet käynyt kurssin 
+[Arduino vasta-alkajille](/arduino/basic/intro/), tai mikro-ohjainohjelmointi on sinulle jo 
+ennestään tuttua, on tämä sivu sinulle pitkälti kertausta. Perehdythän kuitenkin vähintään osioon 
+[Integroitu ohjelmointiympäristö](#integroitu-ohjelmistoympäristö), jotta ohjelmointi Grove-kitin 
+kanssa sujuu vaivatta.
+
+:::caution[Suoritathan ohjelmistojen asennuksen ennen kuin jatkat eteenpäin!]
+Tästä eteenpäin kurssimateriaaleissa oletetaan, että sinulla on käytössä joko 
+[Duino App](https://duino.app/#/) tai Arduino IDE. Jos et ole vielä käynyt läpi osiota 
+**Ohjelmistojen asennus**, tee se nyt. Aloita ohjelmistojen asennus sivulta 
+[Ympäristön valinta](/grove-kit/setup/choosing).
+:::
+
+## Integroitu ohjelmistoympäristö
+
+**Integroitu ohjelmistoympäristö** tai IDE (lyhennetty englannista *integrated development 
+environment*) on ohjelma tai joukko ohjelmia, joilla ohjelmoija suunnittelee ja toteuttaa 
+ohjelmistoa. Koska kurssilla on mahdollista käyttää joko [Duino App](https://duino.app/#/)-sivustoa 
+tai Arduino IDE:tä, tarkastellaan näitä erikseen. Sinun täytyy tutustua vain siihen IDE:hen, jota
+kurssilla käytät.
+
+### Duino App
+
+Alla olevassa kuvassa esitellään Duino Appin keskeisimmät toiminnallisuudet, joita hyödynnetään 
+tällä kurssilla.
+
+<img src={DuinoAppIDE.src} 
+  alt="Duino Appin keskeisimmät toiminnallisuudet" 
+  style="width: 100%; margin: 50 auto;"/>
+
+Duino App näyttää konsolin vain koodin kääntämisen (englanniksi *compile*) yhteydessä. Konsoli
+on virheilmoituksen ja muun tiedon näyttämistä varten, ja se on alemmassa kuvassa mustataustainen
+laatikko IDE:n alareunassa.
+
+<img src={DuinoAppConsole.src} 
+  alt="Duino Appin konsoli" 
+  style="width: 100%; margin: 50 auto;"/>
+
+Kuten ensimmäistä kuvasta voi huomata, kun Duino Appiin luo uuden projektin, se näyttää 
+ikkunan, jossa on valmiiksi kirjoitettu yksinkertainen Arduino-ohjelma — pyyhi ohjelma pois kun 
+siirryt tekemään harjoituksia. Tarkastellaan seuraavaksi kuitenkin ohjelman rakennetta 
+yksityiskohtaisemmin. 
+
+### Arduino IDE
+
+Alla olevassa kuvassa esitellään Arduino IDE:n keskeisimmät toiminnallisuudet, joita hyödynnetään 
+tällä kurssilla.
+
+<img src={ArduinoIDE.src} 
+  alt="Arduino IDE:n keskeisimmät toiminnallisuudet" 
+  style="width: 100%; margin: 50 auto;"/>
+Kuten yllä olevasta kuvasta voi huomata, kun Arduino IDE:n  avaa ensimmäistä kertaa, se näyttää 
+ikkunan, jossa on uusi tyhjä Arduino-ohjelma. Tarkastellaan seuraavaksi ohjelman rakennetta 
+yksityiskohtaisemmin. 
+
+## Koodimalli
+
+Koodimalliin, joka löytyy sekä Duino Appista, että Arduino IDE:stä, on määritelty kaksi funktiota: 
+`setup()` ja `loop()`. Tähän ohjelmaan kirjoitat komentoja Arduinon syntaksin mukaisesti (eli 
+Arduinon ohjelmointikielellä) ja sitä kutsutaan sketsiksi. Sketsi on tekstitiedosto, joka kuvaa 
+ohjelmaasi. Ennalta määritetyt funktiot ovat aina osa Arduino-sketsiä:
+
+* `setup()`
+  * Tähän funktioon sisällytetään komennot, jotka suoritetaan ainoastaan kerran ohjelman 
+  käynnistyessä, kuten anturin alustaminen tai sarjaliikenneprotokollan määrittäminen tietokoneen 
+  tai oheislaitteen kommunikoinnin toteuttamiseen.
+* `loop()`
+  * Tähän funktioon sisälletään pääohjelma, eli komennot, joita haluat Arduinon tekevän toistuvasti 
+  ja ikuisesti (tai niin kauan, kun virtaa riittää).  Tällaisia komentoja voivat olla esimerkiksi 
+  lämpötilan mittaaminen, summerin äänen toistaminen tai näytön päivittäminen.
+
+## Koodin tallentaminen
+
+Kun aloitat ohjelman kirjoittamisen, kannattaa tallentaa se tietokoneellesi tasaisin aikavälein.
+Tallentaminen tapahtuu IDE:stä riippuen seuraavasti:
+* **Duino App**: Koodi tallennetaan automaattisesti, eli sinun ei tarvitse huolehtia asiasta. 
+  Sketsi tallennetaan sen projektin hakemistoon, jonne se on luoto, ja se löytyy sieltä myös 
+  myöhemmin.
+* **Adruino IDE**: Valitse valikosta Tiedosto > Tallenna nimellä (tai englanninkielisellä 
+  käyttöjärjestelmällä *File* > *Save As*). Tallennetun sketsin oletussijainti Windows ja Mac OS 
+  -järjestelmissä on yleensä Tiedostot- tai *Documents*-kansion alla oleva Arduino-kansio, eikä 
+  sitä tarvitse muuttaa.
+
+## Virheenkorjaus ja virheilmoitukset
+
+Voit käyttää Duino Appin *Check & Compile* tai Arduino IDE:n Tarkista (englanniksi *Verify*) 
+-näppäimiä (joiden sijainnit voit tarkistaa ylhäältä) tarkistaaksesi, oletko kirjoittanut koodisi 
+oikein. Sen jälkeen voit lähettää valmiin koodin levyllesi *Compile & Upload* (Duino App) tai 
+Lataa (Arduino IDE, englanniksi *Upload*) -näppäimillä. Jos koodissasi on virheitä, IDE varoittaa 
+sinua niistä ja estää sinua lähettämästä koodia. Tällöin sinun on ensin selvitettävä virheiden syyt 
+ja korjata ne.  Joitakin yleisiä virheitä tai virheiden syitä ovat: 
+
+* Kirjoitusvirheet
+* Puuttuvat puolipisteet eli `;`-merkit koodirivien perästä
+* Määrittelemättömät muuttujat
+* Funktion puuttuminen
+
+Virheenkorjaus voi viedä paljon aikaa, joten kärsivällisyys niiden löytämisessä on erittäin tärkeää!
+
+:::caution[Huomaa!]
+Virheet tulostetaan IDE:n konsoliin, yleensä punaisella tai oranssilla tekstillä. IDE ei 
+kuitenkaan aina osaa kertoa tarkkaan millä rivillä ongelma esiintyy ohjelmassa, ja saatat joutua 
+katsomaan koodia läpi useita kertoja löytääksesi virheen lähteen.
+:::

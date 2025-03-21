@@ -1,0 +1,61 @@
+---
+title: Summeri
+description: Summerin soittaminen Grove-kitin kanssa.
+sidebar:
+  order: 2
+---
+
+Tässä harjoituksessa opit käyttämään Grove-sarjan summeria. Se sijaitsee punaisen LEDin vieressä, 
+ja tavoitteenamme on soittaa sillä ääni, joka soi sekunnin ajan, ja on sitten pois päältä sekunnin.
+
+## Vaihe 1 — Muuttujien määrittäminen
+
+Tallenna ensin vanha sketsi, ja avaa sitten uusi IDE:stäsi riippuen seuraavasti:
+* **Duino App**: 
+  1. Napsauta oikeanpuolisen sivupalkin hakemistoa hiiren oikealla painikkeella ja valitse
+  *New File* tai napsauta hakemiston yläreunassa olevaa uuden tiedoston kuvaketta.
+  2. Anna tiedostolle nimi, esim. `summeri`.
+  3. Valitse *Type*-valikosta tiedostopääte `.ino`.
+* **Arduino IDE**: Avaa uusi sketsi kohdasta Tiedosto > Uusi (englanniksi *File* > *New*).
+
+ Määritä sitten 
+summerin pinninumero (D5) sekä toistettavan äänen taajuus. Määritä nämä kaksi muuttujaa ennen 
+`setup()`-funktiota:
+
+```c
+int buzzerPin = 5;                  // Summerin nimi ja pinninumero
+int toneFrequency = 200;            // Äänen taajuus Hertzeissä (Hz)
+```
+
+## Vaihe 2 — `setup()`
+
+Seuraavaksi määritämme summeripinnin lähtöpinniksi `setup()`-funktiossa, jotta voimme soittaa 
+sillä ääniä. Käytämme tähän taas funktiota `pinMode()`: 
+
+```c
+void setup() {
+  pinMode(buzzerPin, OUTPUT);       // Alusta summeri lähtöpinniksi
+}
+
+```
+## Vaihe 3 — `loop()`
+
+Seuraavaksi määritämme pääohjelman eli `loop()`-funktion. Äänen toistamiseen summerilla 
+Arduino-kielestä löytyy kaksi toimintoa: `tone()` ja `noTone()`. Molemmat tarvitsevat pinninumeron 
+johon summeri on liitetty, jonka lisäksi `tone()`-funktio tarvitsee myös toistettavan äänen 
+taajuuden. Koodimme näyttää siis seuraavalta:
+
+```c
+void loop() {
+  tone(buzzerPin, toneFrequency);   // Soita 200 Hz:n ääntä 1 s ajan
+  delay(1000);                      // Odota 1 s
+  noTone(buzzerPin);                // Kytke summeri pois päältä
+  delay(1000);                      // Odota 1 s
+}
+```
+
+## Vaihe 4 — Valmista!
+
+Kun olet kirjoittanut yllä olevan ohjelman valmiiksi ja saanut summerin soimaan, voit kokeilla 
+muita äänentaajuuksia ja taukoja. Jos innostut, voit kokeilla säveltää lyhyen melodian summerilla 
+lisäämällä eri taajuuksia ja taukoja `loop()`-funktioon.

@@ -1,0 +1,64 @@
+---
+title: Vilkkuva LED
+description: Ledin vilkuttaminen Grove-kitin kanssa.
+sidebar:
+  order: 1
+---
+
+Tutustutaan ensin Grove Kittiin ja Arduinon ohjelmointiympäristöön. Vilkkuva LED-valo on helppo 
+ensimmäinen ohjelma ja toimii myös hyvänä testinä levyn toimivuuden tarkistamiseen. Ohjelmassa 
+määritämme LED-valolle nimen, pinninumeron, pinnin suunnan sekä sen, kuinka nopeasti LED vilkkuu. 
+Rakennetaan LEDiä  vilkuttava ohjelma vaiheittain. 
+
+## Vaihe 1 — Pinninumero
+
+Ensin annamme LEDille nimen ja määritämme sen pinninumeron. Grove-kitissä punainen LED on kytketty 
+digitaalipinniin **4**, joten käytämme tätä pinniä. Voimme itse määrittää tälle pinnille nimen, joka 
+paremmin kuvaa sen käyttöä, määritetään tässä tapauksessa nimeksi `ledPin`. Kerromme ohjelmalle 
+myös, että numero, jonka annamme `ledPin`-muuttujalle, on kokonaisluku eli `int` (englanniksi 
+*integer*). Viimeseksi lisäämme kommentin, joka kuvaa mitä ohjelmamme tämä rivi tekee (harmaa 
+teksti kahden kenoviivan jälkeen). Kommentteja ei huomioida ohjelmassa, ja ne ovat ainoastaan 
+ohjelmoijan omaksi avuksi. 
+
+Kirjoita alla oleva koodi tyhjälle riville ohjelman alkuun ennen `setup()`-funktiota:
+
+```c
+int ledPin = 4;  // LEDin nimi ja pinninumero
+```
+
+## Vaihe 2 — `setup()`
+
+Seuraavaksi määrittelemme `setup()`-funktion toiminnot, eli ne komennot, jotka suoritetaan ainoastaan 
+kerran ohjelman käynnistyessä. Määritämme käyttämämme pinnin lähtöpinniksi, jotta voimme ohjata 
+LEDiä. Käytämme tähän tarkoitukseen funktiota `pinMode()`: 
+
+```c
+void setup() {
+  pinMode(ledPin, OUTPUT);  // Määritä ledPin lähtöpinniksi (OUTPUT)
+}
+```
+
+## Vaihe 3 — `loop()`
+
+Seuraavaksi määritämme pääohjelman eli `loop()`-funktion. Koska haluamme vilkkuvan LED-valon, 
+meidän on päätettävä, kuinka kauan sen tulisi pysyä kussakin tilassa (päällä/pois päältä). Käytämme 
+tähän toimintoa `digitalWrite()`, joka joko kytkee LEDin päälle (eli 5 V tai `HIGH`-tila) tai pois 
+päältä (eli 0 V tai `LOW`-tila). Jotta LED pysyy samassa tilassa tietyn aikaa, käytämme 
+`delay()`-funktiota, joka käskee ohjelmaa odottamaan tietyn määrän millisekunteja ennen siirtymistä 
+seuraavalle ohjelmariville. `loop()`-funktiomme näyttää siis tältä:
+
+```c
+void loop() {
+  digitalWrite(ledPin, HIGH);  // Kytke LED päälle (5 V, tai HIGH)
+  delay(250);                  // Odota 250 millisekuntia
+  digitalWrite(ledPin, LOW);   // Kytke LED pois päältä (0 V, tai LOW)
+  delay(250);                  // Odota 250 millisekuntia
+}
+```
+
+## Vaihe 4 — Valmista!
+
+Kun olet kirjoittanut yllä olevan ohjelman valmiiksi, napsauta *Check & Compile* (Duino App) tai 
+*Verify* (Arduino IDE) -painiketta ja korjaa mahdolliset virheet. Tämän jälkeen olet valmis 
+lataamaan ohjelmasi *Compile and Upload* (Duino App) tai *Upload* (Arduino IDE) -painikkeella. Jos 
+LED-valo vilkkuu, onnea! Olet juuri kirjoittanut ensimmäisen Arduino-ohjelmasi.
