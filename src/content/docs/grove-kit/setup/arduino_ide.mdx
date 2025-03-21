@@ -1,0 +1,118 @@
+---
+title: Arduino IDE
+description: Ohjeet Arduino IDE:n käyttöönottoon.
+sidebar:
+  order: 3
+---
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import ArduinoIDE from '../../../../assets/images/Arduino_IDE.svg';
+
+Tämä sivu sisältää ohjeet Arduino IDE:n, USB-ajurin ja Arduino-kirjastojen asentamiseen, ja
+Arduinoon yhdistämiseen Arduino IDE:ssä.
+
+:::caution[Arduino IDE:n käyttöönotto vaatii ohjelmien lataamista tietokoneelle]
+Jos sinulla on käytössäsi tietokone, jolle uusien ohjelmien lataaminen ei ole mahdollista 
+(esimerkiksi oppilaitoksen tietokone), suosittelemme ohjelmointia Duino Appissa Arduino IDE:n 
+sijaan. Ota Duino App käyttöön [näiden ohjeiden](/grove-kit/setup/duinoapp/) mukaisesti.
+:::
+
+## Arduino IDE:n asennus
+
+Arduino IDE on omassa sovelluksessaan toimiva toimiva 
+[IDE](/grove-kit/intro/programming/#integroitu-ohjelmistoympäristö), joka on saatavilla 
+Windowsille, Linuxille ja Mac OS X:lle, ja sen voi ladata alla olevasta napista. Valitse oikea 
+lataustiedosto käyttöjärjestelmällesi, avaa lataustiedosto ja seuraa ohjeita.
+
+<LinkCard 
+  title="Lataa Arduino IDE täältä" 
+  description="Todennäköisesti lataussivusto ehdottaa käyttöjärjestelmällesi sopivaa lataustiedostoa." 
+  href="https://www.arduino.cc/en/software/" 
+  target="_blank"
+  rel="noopener noreferrer"
+/>
+
+Kun avaat Arduino IDE:n asennuksen jälkeen, sinun pitäisi nähdä alla olevan kuvan kaltainen ikkuna.
+
+<img src={ArduinoIDE.src} 
+  alt="Arduino IDE:n keskeisimmät toiminnallisuudet" 
+  style="width: 100%; margin: 50 auto;"
+/>
+
+## USB-ajurin asentaminen
+
+Käyttääksesi Grove-kitin Seeeduino Lotus mikro-ohjainta, tarvitset CP210x-nimisen USB-ajurin 
+käyttöjärjestelmääsi varten, ja voit ladata sen alla olevasta napista.
+
+<LinkCard 
+  title="Lataa USB-ajuri täältä" 
+  description="Ajuri ladataan Silicon Labsin sivuilta." 
+  href="https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers" 
+  target="_blank"
+  rel="noopener noreferrer"
+/>
+
+Siirry Silicon Labsin sivulla *Downloads*-välilehdelle, ja valitse käyttöjärjestelmäsi mukainen
+ajuritiedosto, eli Windowsilla "Universal Windows Driver" ja Mac OS:lla "VPC Mac OSX Driver". 
+Ajuritiedoston napsauttaminen lataa tietokoneellesi zip-tiedoston, jolta ajuri asennetaan.
+
+Seuraa sitten käyttöjärjestelmäsi mukaista asennusprosessia alta.
+
+### Asennus Windowsille
+
+1.	Etsi ladattu zip-tiedosto Windows File Explorerilla ja pura (englanniksi *unzip*) se.
+2.	Napsauta hiiren kakkospainikkeella tiedostoa **silabser.inf** ja valitse Asenna.
+3.	Noudata ruudussa näkyviä ohjeita.
+
+### Asennus Mac OS:lle
+
+1.	Etsi ladattu zip-tiedosto Finderilla ja pura (englanniksi *unzip*) se. Jos tiedosto on purettu 
+automaattisesti latauksen yhteydessä, avaa ladattu kansio *macOS_VPC_Driver* suoraan. 
+2.	Avaa dmg-tiedosto ja kaksoisnapsauta *Install CP210x VPC Driver* -ajuria.
+3.	Noudata ruudussa näkyviä ohjeita.
+4.	**Huomaa!** Mac OS 10.13:ssa ja uudemmissa versioissa ajurin asennus saattaa olla estetty. 
+Poista esto avaamalla Järjestelmäasetukset > Tietosuoja ja suojaus (*System Preferences* > 
+*Security & Privacy*) ja poistamalla järjestelmälaajennuksen esto (lisätietoja tästä on Applen 
+teknisessä huomautuksessa TN2459 "User-Approved Kernel Extension Loading"). Asennus jatkuu 
+hyväksymisen jälkeen automaattisesti.
+
+## Arduinoon yhdistäminen
+
+Kun ajuri on asennettu, liitä Grove-kitti tietokoneeseesi USB-kaapelilla ja avaa Arduino IDE. 
+Seuraa sitten käyttöjärjestelmäsi mukaista prosessia Arduinoon yhdistämiseksi alta. 
+
+### Yhdistäminen Windowsilla
+
+1.	Napsauta Arduino IDE:ssä *Tools* > *Board* > *Arduino Uno* valitaksesi oikean 
+kehityslevymallin.
+2.	Napsauta sitten *Tools* > *Port* > *COM**N***, jossa ***N*** on portin numero, jonka käyttöjärjestelmäsi on 
+määrittänyt Arduinolle.
+
+### Yhdistäminen Mac OS:lla
+
+1.	Napsauta Arduino IDE:ssä *Tools* > *Board* > (*Arduino AVR Boards* >) *Arduino Uno*.
+2.	Napsauta sitten *Tools* > *Port* >, jonka alavalikossa Arduinon tulisi löytyä polulta, josta 
+löytyy sana **usbserial** tai **usbmodem**. Valitse alavalikosta tämä vaihtoehto. Jos et tunnista, 
+mikä Arduinon portti on, irrota ja yhdistä tietokoneeseen uudelleen, ja tarkista, mikä 
+vaihtoehto katoaa ja palaa takaisin alavalikkoon.
+
+:::note[Porttien ja polkujen numeroinnista]
+Huomaathan, että COM-portin ja usbserial- tai usbmodem-polkujen perässä oleva numero voi muuttua 
+aina, kun liität Grove-kitin tietokoneeseesi.
+:::
+
+## Arduino-kirjastojen asennus
+
+**Kirjastot** (englanniksi *library*) ovat kokoelma jo toteutettuja toimintoja, joita voimme 
+hyödyntää erilaisissa projekteissa. Tämän kurssin suorittamiseen tarvitsemme Arduino-kirjastoa 
+nimeltään UKESF Sixth-Formers, joka sisältää joukon toimintoja, joiden avulla helpotamme 
+Grove-kitin käyttöä. Tällä kurssilla tarvittavat kirjastot ladataan seuraavasti:
+
+1. Asenna kirjasto valitsemalla *Sketch* > *Include Library* > *Manage Libraries...* tai Arduino 
+IDE:n vasemmanpuoleisen valikon *Library Manager* -välilehdeltä.
+2. Kirjoita sitten **UKESF Sixth-Formers** hakukenttään ja napsauta *Install*.
+3. Varmista, että asennat uusimman version.
+    - Jos IDE avaa ikkunan ”Install library depedencies”, valitse ”Install all”. Tällöin UKESF 
+    Sixth-Formers -kirjaston hyödyntämät kirjastot eli **riippuvuudet** (englanniksi 
+    *dependencies*) ladataan myös.
+
+Siinä kaikki, nyt voit siirtyä tekemään harjoituksia!

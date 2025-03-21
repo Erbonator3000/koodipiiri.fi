@@ -1,0 +1,186 @@
+---
+title: Kallistusanturi
+description: Kallistusanturi, joka yhdistää aiemmat Grove-kit -tehtävät.
+sidebar:
+  order: 4
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import rotationLight from '../../../../assets/images/rotation_light.svg';
+import rotationDark from '../../../../assets/images/rotation_dark.svg';
+
+
+Tässä harjoituksessa yhdistät kaiken tähän mennessä oppimasi yhdeksi ohjelmaksi: rakennat 
+kallistusanturin varoitusvalolla sekä summerilla. Ohjelman tulisi toteuttaa seuraavat toiminnot:
+
+* Lukea tiedot kiihtyvyysanturista
+* Laskea levyn kallistus ja nyökkäys (jotka molemmat ovat kulmia) asteina kiihtyvyystietojen 
+perusteella
+* Jos kallistus tai nyökkäys ylittää 20 astetta, sytyttää LED ja soittaa summeria
+
+Tämän tehtävän ohjeet sisältävät ainoastaan kommentteja siitä, mitä ohjelman tulisi tehdä, ja sinun 
+tehtäväsi on toteuttaa ne aiempien tehtävien ohjelmien avulla. 
+
+:::note[Tuntuuko ohjelman itse kirjoittaminen vaikealta?]
+Jos esimerkiksi pinninumerot tai syntaksi ovat vielä epäselviä, voit aina palata harjoitusten 1-3
+ohjelmiin. Niissä toteutettuja toimintoja hyödynnetään tässä harjoituksessa.
+:::
+
+## Vaihe 1 — Alustus
+
+Aloittaaksemme meidän on jälleen sisällytettävä UKESF-kirjasto, jotta pääsemme käyttämään 
+kiihtyvyysanturia. Lisäksi haluamme alustaa tarvittavat muuttujat kuten harjoituksissa 1-3. Täytä
+ puuttuvat koodirivit kommenttien perusteella ennen `loop()`-funktiota:
+
+```c
+// Sisällytä UKSEF-kirjasto
+
+// Määritä LEDin nimi ja pinninumero
+// Määritä summerin nimi ja pinninumero
+// Määritä summerin taajuus Hertzeissä (Hz)
+// Luo kiihtyvyysanturin muuttuja ja nimi
+```
+
+## Vaihe 2 — `setup()`
+
+Seuraavaksi alusta ja käynnistä LED, summeri, sarjaliikenne ja kiihtyvyysmittari 
+`setup()`-funktiossa:
+
+```c
+void setup() {
+  // Määritä ledPin lähtöpinniksi (OUTPUT)
+  // Määritä summeri lähtöpinniksi (OUTPUT)
+  // Alusta sarjaliikenne (9600 baud)
+  // Alusta kiihtyvyysanturi
+}
+```
+
+## Vaihe 3 — `loop()`
+
+Lopuksi toteutamme pääohjelman `loop()`-funktiossa. Siinä haluamme tehdä kolme asiaa:
+
+1. Lukea kiihtyvyysanturin dataa
+2. Laskea kallistus ja nyökkäys asteina
+3. Sytyttää LED ja soittaa summeria, jos kallistus tai nyökkäys ylittää 20 astetta
+
+Tutkitaan näitä kolmea vaihetta seuraavaksi erikseen.
+
+### 1. Kiihtyvyysanturidatan lukeminen
+
+Käytä harjoituksen 3 koodia avuksi tämän koodin kirjoittamisessa. Vaikka ohjelmamme ei edellytä 
+kiihtyvyysdatan tulostamista sarjamonitoriin, se on hyvä tehdä virheenkorjausta varten. Voimme 
+näin käyttää sarjamonitoria varmistaaksemme, että pystymme lukemaan dataa kiihtyvyysmittarista 
+odotetulla tavalla.
+
+```c
+void loop() {
+  // Lue x-akselin kiihtyvyys
+  // Lue y-akselin kiihtyvyys
+  // Lue z-akselin kiihtyvyys
+  
+  // Tulosta arvot Serial Monitoriin
+}
+```
+
+### 2. Kallistuksen ja nyökkäyksen laskeminen kiihtyvyysdatan avulla
+
+Tutustutaan ensin aiheeseen liittyvään teoriaan lyhyesti. Lentodynamiikassa puhutaan kolmesta 
+perusliikkeestä lentävän aluksen asentoon liittyen:
+
+* kääntyminen pituusakselin suhteen (englanniksi *roll*) eli kallistus
+* kääntyminen pystyakselin suhteen (englanniksi *yaw*) eli kääntö
+* kääntyminen poikkiakselin suhteen (englanniksi *pitch*) eli nyökkäys
+
+Kallistus, kääntö ja nyökkäys ovat pyörimisvoimia eri akselien suhteen, kuten alla olevassa 
+kuvassa on havainnollistettu, eikä niiden muuntaminen kiihtyvyysmittarin datasta kulmiksi ole 
+yksinkertaista. Etsimällä apua netistä hakusanoilla *"pitch and roll Arduino"* tai *"pitch and roll
+from acceleration"*, löydät monia erinomaisia lähteitä siihen, kuinka nämä kulmat voi laskea 
+kiihtyvyysanturin datan avulla. Kaksi hyvää selitystä löydät alla olevista linkeistä (englanniksi).
+
+<img src={rotationLight.src} 
+  alt="Visualisaatio pyörimisvoimista eri akselien suhteen" 
+  class="dark:sl-hidden"
+  style="width: 55%; margin: 0 auto;"/>
+<img src={rotationDark.src} 
+  alt="Visualisaatio pyörimisvoimista eri akselien suhteen" 
+  class="light:sl-hidden" 
+  style="width: 55%; margin: 0 auto;" />
+
+<CardGrid>
+  <LinkCard 
+    title="Lyhyt selitys" 
+    description="DF Robot-sivuston tutoriaalissa kulmat johdetaan lyhyesti." 
+    href="https://wiki.dfrobot.com/How_to_Use_a_Three-Axis_Accelerometer_for_Tilt_Sensing" 
+    target="_blank"
+    rel="noopener noreferrer" />
+  <LinkCard 
+    title="Yksityiskohtainen selitys" 
+    description="NPX:n Application Notessa kulmat johdetaan yksityiskohtaisesti. "
+    href="https://www.nxp.com/docs/en/application-note/AN3461.pdf" 
+    target="_blank"
+    rel="noopener noreferrer" />
+</CardGrid>
+
+Vaikka kallistumisen ja nyökkäämisen koko johtaminen on liian pitkä aihe sisällytettäväksi tähän 
+harjoitukseen, suosittelemme, että tutkit yllä olevat linkit läpi saadaksesi käsityksen siitä, mitä 
+niissä tapahtuu ja miksi. Lopulliset yhtälöt on annettu alla olevassa koodipätkässä, ja vaativat 
+myös piin käyttöä, joka löytyy Arduinon ohjelmistoympäristössä nimellä `M_PI`.
+
+```c
+void loop() {
+  // Lue x-akselin kiihtyvyys
+  // Lue y-akselin kiihtyvyys
+  // Lue z-akselin kiihtyvyys
+  
+  // Tulosta arvot Serial Monitoriin
+
+  // Laske kallistus ja nyökkäyskulma kiihtyvyysanturin datan perusteella,
+  // katso yllä olevat linkit kaavojen johtamiseen
+  float roll  = (atan2(-y, z) * 180.0) / M_PI;
+  float pitch = (atan2(x, sqrt(y * y + z * z)) * 180.0) / M_PI;
+}
+```
+
+### 3. LEDin sytyttäminen ja summerin soittaminen
+
+Lopuksi haluamme sytyttää LED-valon ja soittaa summeria, jos kallistus tai nyökkäys on yli (>) 20 
+astetta kumpaan tahansa suuntaan (tähän täytyy käyttää itseisarvofunktiota `abs()`). Meidän on myös 
+sisällytettävä ohjelmaan ehtolause (englanniksi *if-else statement*), sillä haluamme testata 
+syötemuuttujan, eli kulman, arvoa ehtoa vastaan. 
+
+:::tip[Kiinnostaako ehtolause?]
+Alla olevaan koodimalliin ehtolause on hahmoteltu valmiiksi. Jos kuitenkin haluat perehtyä 
+ehtolauseiden mahdollistamiin rakenteisiin syvemmin, kurssillamme **Arduino vasta-alkajille** 
+käsitellään [ehtolauseiden teoriaa](/arduino/basic/if) yksityiskohtaisemmin.
+:::
+
+Kallistusanturin tapauksessa haluamme tutkia ehtoa "onko kulma > 20 astetta?", jonka
+tuloksen perusteella suoritettava polku valitaan. Ehtolause onkin ohjelmamme viimeinen komponentti,
+eli voimme nyt koota koko koodimallin. Yritä kirjoittaa se aikaisemmin tekemiesi ohjelmien avulla 
+ja pyydä apua, jos tarvitset.
+
+```c
+void loop() {
+  // Lue x-akselin kiihtyvyys
+  // Lue y-akselin kiihtyvyys
+  // Lue z-akselin kiihtyvyys
+  
+  // Tulosta arvot Serial Monitoriin
+
+  // Laske kallistus- ja nyökkäyskulma kiihtyvyysanturin datan avulla,
+  // katso linkit ylempää kaavojen johtamiseksi
+  float roll  = (atan2(-y, z) * 180.0) / M_PI;
+  float pitch = (atan2(x, sqrt(y * y + z * z)) * 180.0) / M_PI;
+
+  // Ehtolause yli 20 asteen kulman tarkistamiseen, huomaa abs()
+  if(abs(roll) > 20) {
+    // Kytke LED päälle (HIGH, 1, tai 5 V)
+    // Soita summeria 200 Hz:n taajudella
+  } else {
+    // Kytke LED pois päältä (LOW, 0, tai 0 V)
+    // Kytke summeri pois päältä
+  }
+
+  delay(10); // Viivytä ohjelmaa 10 ms ajan loop()-funktion vakauden vuoksi
+}
+```

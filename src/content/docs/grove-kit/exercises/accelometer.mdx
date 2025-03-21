@@ -1,0 +1,70 @@
+---
+title: Kiihtyvyysanturi
+description: Kiihtyvyysanturi ja sarjaliikenne Grove-Kitin kanssa.
+sidebar:
+  order: 3
+---
+
+Tässä harjoituksessa opit lukemaan tietoja kolmen akselin kiihtyvyysanturista ja piirtämään niitä 
+kuvaajaan Arduinon *Serial Plotterilla*. Kiihtyvyysanturi on laite, joka mittaa kappaleen nopeuden 
+muutosnopeutta. Esimerkiksi Maan pinnalla levossa oleva kiihtyvyysanturi mittaa Maan painovoiman 
+aiheuttaman kiihtyvyyden 1 *g*:n eli Maan putoamiskiihtyvyyden tai noin 9,81 ms<sup>-2</sup> 
+suuruiseksi. Käyttämällä Grove-kitin kiihtyvyysmittaria voimme mitata kiihtyvyyttä suhteessa 
+kolmeen eri akseliin. Katsotaan, miten se tehdään!
+
+:::tip[Käythän läpi sarjaliikenne-tutoriaalin ennen harjoituksen tekemistä!]
+Opettelemme seuraavaksi hyödyntämään sarjaliikennettä, joka mahdollistaa monimutkaisemman 
+kommunikoinnin Grove-kitin ja antureiden välillä. Tässä välissä kannattaa siis käydä läpi kurssin 
+[sarjaliikenne-tutoriaali](/grove-kit/intro/serial_tutorial), joka auttaa harjoituksen tekemisessä.
+:::
+
+## Vaihe 1 — Kirjaston ja muuttujien määrittely
+
+Sisällytä ensin **ennen** `setup()`-funktiota UKESF-kirjasto, joka käsittelee joitain 
+kiihtyvyysmittarin toimintoja puolestamme, ja määritä kiihtyvyysmittarin muuttuja nimeltä 
+`myAccelerometer `:
+
+```c
+#include <UkesfSixthFormers.h>      // Lisää UKESF-kirjaston funktiot
+
+Accelerometer myAccelerometer;      // Luo kiihtyvyysanturin muuttuja ja nimi
+```
+
+## Vaihe 2 — `setup()`
+
+Alusta seuraavaksi sarjaliikenne sekä kiihtyvyysmittari `setup()`-funktiossa:
+
+```c
+void setup() {
+  Serial.begin(9600);           // Alusta sarjaliikenne
+  myAccelerometer.begin();      // Alusta kiihtyvyysanturi
+}
+```
+
+## Vaihe 3 — `loop()`
+
+Lue sitten `loop()`-funktiossa kiihtyvyysmittarin arvot ja tulosta ne sarjamonitoriin. Huomaa, että 
+meidän on nyt käytettävä datatyyppinä liukulukumuuttujaa (englanniksi *floating point number*, eli 
+`float`) aiemmin käytettyjen `int`-muuttujien sijaan, koska kiihtyvyys annetaan desimaalilukuna.
+
+```c
+void loop() {
+  float x = myAccelerometer.readX();    // Lue x-akselin kiihtyvyys
+  float y = myAccelerometer.readY();    // Lue y-akselin kiihtyvyys
+  float z = myAccelerometer.readZ();    // Lue z-akselin kiihtyvyys
+  Serial.print(x);
+  Serial.print(" ");
+  Serial.print(y);
+  Serial.print(" ");
+  Serial.println(z);
+  delay(10);    // Viivytä ohjelmaa 10 ms ajan loop()-funktion vakauden vuoksi
+}
+```
+
+## Vaihe 4 — Valmista!
+
+Lopuksi on kaksi tapaa tarkastella kiihtyvyysmittarista lukemiasi tietoja. Ensimmäinen on 
+sarjamonitorin käyttäminen kuten ennenkin. Toinen on *Serial Plotter*, johon pääset kohdasta 
+*Serial* > *Plot* (Duino App) tai *Tools* > *Serial Plotter* (Arduino IDE). Plotteri on erittäin 
+hyödyllinen työkalu, joka piirtää tiedot meille kaaviomuodossa. Kokeile kallistaa ja kääntää 
+lautaasi tunnistaaksesi kiihtyvyysanturin kaikki kolme akselia.

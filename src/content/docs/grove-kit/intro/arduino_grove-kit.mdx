@@ -1,0 +1,159 @@
+---
+title: Arduino ja Grove Kit
+description: Johdatus Arduinoon ja Grove-kittiin.
+sidebar:
+  order: 1
+---
+
+import unoLight from '../../../../assets/images/uno_light.svg';
+import unoDark from '../../../../assets/images/uno_dark.svg';
+
+import tracksDark from '../../../../assets/images/tracks_dark.svg';
+import tracksLight from '../../../../assets/images/tracks_light.svg';
+
+import groveParts from '../../../../assets/images/grove_parts.svg';
+
+import firmware from '../../../../assets/images/firmware.svg';
+
+
+Tämä kurssi esittelee *Grove Beginner Kit for Arduino* -nimisen Arduino-pohjaisen mikro-ohjaimen 
+perusteet ja opettaa sinulle siihen tarvittavat ohjelmoinnin ja elektroniikan perusteet. Kurssin 
+suoritettuasi olet omaksunut tarvittavat tiedot ja taidot myös omien projektien toteuttamiseen. 
+Tervetuloa!
+
+:::note[Kurssi vaatii laitteistoa]
+Huomaathan, että tällä kurssilla käytetään fyysistä mikro-ohjainlevyä. Jos haluat tutustua 
+mikro-ohjainohjelmointiin matalammalla kynnyksellä ilman fyysista laitteistoa, kurssimme 
+[Arduino vasta-alkajille](/arduino/basic/intro/) mahdollistaa tämän simulaattoriharjoitusten 
+avulla.
+:::
+
+## Mikä ihmeen Arduino?
+
+Arduino on **mikro-ohjain**, eli ohjelmoitava elektroninen kehitysalusta, johon voi liittää 
+erilaisia elektronisia komponentteja ja antureita. Sillä voi esimerkiksi mitata huoneen lämpötilaa, 
+kytkeä valoja päälle ja pois, tai rakentaa kokonaisen sääaseman. Sen käyttöön ei tarvita syvällistä 
+tietoa mikro-ohjainten toiminnasta, vaan riittää, että hallitsee ohjelmoinnin perusteet ja keksii 
+jonkun idean, jonka haluaisi toteuttaa. 
+
+<img src={unoLight.src} 
+  alt="Arduino Uno -levyn pinnikaavio" 
+  class="dark:sl-hidden" 
+  style="width: 100%; margin: 0 auto;"/>
+<img src={unoDark.src} 
+  alt="Arduino Uno -levyn pinnikaavio" 
+  class="light:sl-hidden" 
+  style="width: 100%; margin: 0 auto;" />
+
+Yllä olevassa kuvassa on Arduino Uno -levy ylhäältä päin katsottuna. Siniseen piirilevyyn on 
+kytketty mikrokontrollerisiru (eli Arduino-mikro-ohjaimen aivot), joka on kuvattu mustana 
+suorakulmiona levyn vasemmassa alakulmassa. Mikrokontrollerisiruja on monenlaisia, ja 
+Arduino-levyssä usein käytetty malli on nimeltään "Microchip ATmega328P".  Siruja kutsutaan myös 
+IC-piireiksi, tai IC:iksi (englanniksi *integrated circuit*), ja ne voivat sisältää muutamista 
+tuhansista miljardeihin **transistoria**. Yksittäinen transistori toimii yksinkertaisena kytkimenä, 
+joka lukee tai kirjoittaa ykköstä ja nollaa (eli binääridataa), mutta yhdessä miljoonat 
+transistorit voivat saada aikaan hyvinkin monimutkaisia lopputuloksia.
+
+Mikrokontrollerin lisäksi Arduino-levy koostuu **komponenteista**, jotka toimivat mikrokontrollerin 
+virtalähteenä, tukevat sen ohjelmointia USB-portin kautta, ja antavat meille mahdollisuuden kytkeä 
+siihen ulkoisia komponentteja tulo- ja lähtöpinnien kautta levyn molemmilla reunoilla.
+
+Voit tutustua levyyn ja sen komponentteihin tarkemmin itse yllä olevasta kuvasta. Kuvan
+pinnikaaviota on yksinkertaistettu tätä kurssia varten, ja sen koko versio on saatavilla 
+englanniksi [täältä](https://content.arduino.cc/assets/Pinout-UNOrev3_latest.pdf).
+
+## Arduino Grove Kit
+
+Mikro-ohjainlevy, jota käytämme tällä kurssilla, näyttää hieman erilaiselta kuin Arduino Uno. Se on 
+isompi ja sen keskellä sijaitsee mikro-ohjain nimeltä ”Seeduino Lotus”, joka on esikytketty 
+useisiin antureihin levyn molemmilla sivuilla. Seeduino Lotus on muunneltu versio Arduinosta, joka 
+kuitenkin käyttäytyy täsmälleen kuten alkuperäinen Arduino-levy. Hieno puoli tässä levyssä on, että 
+siihen ei erikseen tarvitse kytkeä anturimoduuleja, jotta ne toimisivat. Voit kytkeä levyn suoraan 
+tietokoneeseen micro-USB-liittimen kautta ja ohjelmoida antureita heti piirilevyn esikytkettyjen 
+liitäntöjen kautta. Alla olevasta kuvasta näet, mitä kaikkia anturimoduuleja levyyn sisältyy.
+
+<img src={groveParts.src} 
+  alt="Grove-kit -kehitysalusta ja sen oheislaitteet" 
+  style="width: 100%; margin: 20 auto;"/>
+
+Kuten yllä olevasta kuvasta voi huomata, Grove Beginner Kit koostuu Seeduino Lotus 
+-mikro-ohjaimesta ja kymmenestä **oheislaitteesta**. Oheislaitteiden englanninkieliset nimet 
+löytyvät suoraan kehitysalustasta. Kuva on muokattu 
+[täältä](https://www.seeedstudio.com/Grove-Beginner-Kit-for-Arduino-p-4549.html).
+
+Alla olevassa kuvassa on esimerkki **piirilevykiskoista**, jotka yhdistävät anturimoduulin 
+mikro-ohjaimeen. Moduuleja ei siis tarvitse irrottaa, ellei toisin mainita. Jos kuitenkin irrotat 
+anturimoduulin piirilevystä, voit liittää sen takaisin laatikon sivulokeroissa olevilla 
+kaapeleilla. Piirilevyn kuparijohtimet (englanniksi *track* tai *trace*), jotka kulkevat piirilevyn 
+break-out-pisteiden läpi ja yhdistävät oheislaitteet Arduinoon. Näiden ansiosta oheislaitteiden 
+käyttö ei vaadi kaapeleita.
+
+<img src={tracksLight.src} 
+  alt="Piirilevykiskot piirilevyllä" 
+  class="dark:sl-hidden" 
+  style="width: 50%; margin: 0 auto;"/>
+<img src={tracksDark.src} 
+  alt="Piirilevykiskot piirilevyllä" 
+  class="light:sl-hidden" 
+  style="width: 50%; margin: 0 auto;"/>
+
+:::caution[Huomaa!]
+Suosittelemme jättämään anturimoduulit kiinni tämän kurssin ajaksi.
+:::
+
+### Plug and Play Demo
+
+Jos sinulla on uusi Grove-kit, se tulee esiladatulla demo-ohjelmalla, joka näkyy, kun kytket sen 
+ensimmäistä kertaa tietokoneeseen kiinni. Jos demoa ei näy kytkettyäsi levyn koneeseen, voit 
+asentaa demo-ohjelman uudelleen. Ohjeet uudelleenasennukseen löydät sivulta 
+[Plug and Play demo-ohjelman uudelleenlataus](/grove-kit/wrapup/demo).
+
+Kun demo käynnistyy, OLED-näyttö menee päälle ja näyttää **antureista kerättyä dataa**. Käytä 
+näppäinpainiketta ja pyörivää potentiometriä siirtyäksesi anturiesittelyjen välillä. Alla olevasta 
+kuvasta näet demon näppäinsäätimet.
+
+<img src={firmware.src} 
+  alt="Plug and Play Demon näppäinsäätimet" 
+  style="width: 100%; margin: 20 auto;"/>
+
+Käytännössä Plug and Play demo-ohjelma sisältää seuraavanlaiset toiminnallisuudet:
+* Lyhyt napin painallus valitsee näytössä näkyvän anturiesittelyn.
+  * Pitkä napin painallus poistuu nykyisestä anturiesittelystä
+  * Potentiometriä pyörittämällä voit valita eri anturiesittelyjä.
+* LED-valo ja summeri antavat palautetta nappien painalluksista. 
+* Demo-ohjelmaan sisältyvät seuraavat anturiesittelyt:
+  * Kiihtyvyys
+  * Ilmanpaine
+  * Lämpötila ja kosteus
+  * Äänenvoimakkuus
+  * Valon määrä
+
+## Liitäntä Arduinoon
+
+Arduinossa ja Seeduino Lotus -levyn sivuilla on metallisia **pinnejä**. Näitä pinnejä käytetään 
+pääasiallisesti kahteen eri tarkoitukseen: joko lähtö- tai tulopinneinä. **Lähtöpinneihin** voidaan 
+kytkeä esimerkiksi esivastus ja LED-valo, joka voidaan kytkeä päälle tai pois päältä pinnin avulla. 
+**Tulopinniin** taas voidaan kytkeä esimerkiksi kosteusanturi, joka syöttää dataa mikro-ohjaimelle. 
+Nämä pinnit ovat niin sanottuja IO-pinnejä (englanniksi *input/output pin*) ja niiden suunta 
+(lähtö tai tulo) määritetään koodin avulla. 
+
+Pinnien suunnan lisäksi tietyt pinnit on tarkoitettu tiettyjen signaalien lähettämiseen tai 
+vastaanottamiseen. Nämä eri pinnityypit ovat:
+
+* **Digitaaliset I/O pinnit**
+  * Arvo voi olla joko High (5 V) tai Low (0 V).
+  * Yhdistetään digitaalisiin oheislaitteisiin, kuten painikkeisiin, kytkimiin ja näyttöihin.
+  * Merkitty numeroilla 0–13 Arduinon ohjelmointikielessä sekä Seeduino Lotus -levyn vasemmassa 
+  pinniliittimessä.
+* **Analogiset I/O pinnit**
+  * Arvo on jatkuva 0 V ja 5 V välillä (mukaan lukien arvot 0 V ja 5 V). 
+  * Yhdistetään analogisiin oheislaitteisiin, kuten potentiometreihin, valoantureihin tai 
+  mikrofoneihin.
+  * Ovat merkitty A0, A1, jne. Arduinon ohjelmointikielessä ja "ANALOG IN" Seeduino Lotus -levyn 
+  oikean liittimen yläosassa. 
+* **Sarjaliikenne:** Toinen tärkeä tapa kommunikoida Arduino-levyn kanssa on niin sanottu 
+sarjaliikenne (englanniksi *serial communication*) esimerkiksi Bluetoothin tai USB-liitännän 
+kautta. Sarjaliikenteen kautta kommunikointi voi olla monimutkaisempaa, mutta nopeampaa kuin 
+yhden IO-pinnin kautta. Näemme tästä esimerkkejä harjoituksissa 
+[kiihtyvyysanturi](/grove-kit/exercises/accelometer/) ja 
+[kallistusanturi](/grove-kit/exercises/tilt_sensor/).

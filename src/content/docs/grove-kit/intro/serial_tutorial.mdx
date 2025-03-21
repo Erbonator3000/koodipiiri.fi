@@ -1,0 +1,43 @@
+---
+title: Sarjaliikenne tietokoneen kanssa
+description: Johdatus kurssilla käytettävään ohjelmointiympäristöön.
+sidebar:
+  order: 3
+---
+
+Tähän mennessä olemme käyttäneet digitaalisia I/O-liitäntöjä Grove-kitin ja antureiden väliseen 
+kommunikointiin. Mutta miten toimitaan monimutkaisempien laitteiden ja antureiden, kuten 
+tietokoneesi tai kiihtyvyysanturin kanssa? Vastaus tähän kysymykseen on **sarjaliikenne**. 
+Sarjaliikenne muuntaa informaation bittivirraksi, joka sitten lähetetään kahden laitteen välillä 
+yhden tai useamman johdon kautta.
+
+Arduinon `Serial`-funktiot antavat meille mahdollisuuden käyttää UART-tiedonsiirtoprotokollaa 
+(englanniksi ”universal asynchronous receiver/transmitter”) tietokoneen kanssa kommunikointiin. 
+Käyttääksemme näitä `Serial`-toimintoja, meidän on ensin alustettava sarjaliikenneprotokolla 
+funktiolla `Serial.begin(9600)`. Arvo 9600 määrää yhteyden ”baudinopeuden”, eli sen, kuinka 
+nopeasti dataa lähetetään. Kun käytät Arduino-laitetta, törmäät usein `begin()`-funktioon 
+erilaisten oheislaitteiden ja viestintäprotokollien alustamiseksi.
+
+Sarjaprotokollan käynnistämisen jälkeen voit käyttää `Serial`-funktioiden toimintoja, kuten 
+toimintoa `Serial.print()`, joka lähettää suluissa olevan tekstin tietokoneelle ja toimintoa 
+`Serial.println()`, joka lisää tekstin jälkeen uuden rivin. Testataan seuraavaksi tätä 
+toiminnallisuutta. Kirjoita alla oleva koodi uuteen sketsiin ja lähetä se levylle. Siirry sitten 
+sarjamonitoriin IDE:stäsi riippuen seuraavasti:
+* **Duino App**: Napsauta oikean yläkulman *Serial* -näppäintä tai, kun konsoli on koodin 
+  lataamisen jälkeen auennut, siirry konsolissa *Serial*-välilehdelle.
+* **Adruino IDE**: Valitse valikosta Työkalut (englanniksi *Tools*) > *Serial Monitor* tai
+  napsauta oikeassa yläkulmassa olevaa suurennuslasikuvaketta.
+
+Tämä avaa uuden ikkunan, jossa näkyy lähettämämme viesti. 
+
+Kokeile lähettää erilaisia viestejä käyttämällä sekä `Serial.print()` että `Serial.println()` -toimintoja.
+
+```c
+void setup() {
+  Serial.begin(9600);               // Aloita sarjaliikenne
+  Serial.println("Hello, World!");  // Lähetä viesti tietokoneelle
+  // Voit lisätä uusia print() viestejä tähän
+}
+
+void loop() {} // loop()-funktio pysyy tällä hetkellä tyhjänä
+```
