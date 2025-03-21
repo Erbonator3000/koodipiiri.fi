@@ -16,7 +16,7 @@ export default defineConfig({
             link: '/arduino/basic/intro',
             items: [
               {
-                label: 'Arduino vasta alkajille',
+                label: 'Arduino vasta-alkajille',
                 autogenerate: { directory: '/arduino/basic' },
               },
               {
@@ -30,6 +30,16 @@ export default defineConfig({
               {
                 label: 'Valot vilkkumaan',
                 autogenerate: { directory: '/arduino/lights' },
+              },
+            ],
+          },
+          {
+            label: 'Mikro-ohjainlevyn ohjelmointia Grove Kitin kanssa',
+            link: '/grove-kit/exercises/led',
+            items: [
+              {
+                label: 'Harjoitukset',
+                autogenerate: { directory: '/grove-kit/exercises' },
               },
             ],
           },
