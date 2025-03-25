@@ -16,7 +16,7 @@ export default defineConfig({
             link: '/arduino/basic/intro',
             items: [
               {
-                label: 'Arduino vasta alkajille',
+                label: 'Arduino vasta-alkajille',
                 autogenerate: { directory: '/arduino/basic' },
               },
               {
