@@ -33,6 +33,16 @@ export default defineConfig({
               },
             ],
           },
+          {
+            label: 'Sähkö ja virtapiirit',
+            link: '/sahko/basic/intro',
+            items: [
+              {
+                label: 'Sähkö ja virtapiirit',
+                autogenerate: { directory: '/sahko/basic' },
+              },
+            ],
+          },
         ]),
       ],
     }),

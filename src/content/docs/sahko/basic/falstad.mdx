@@ -1,0 +1,64 @@
+---
+title: Falstad piirisimulaattorin käyttö
+sidebar:
+  order: 100
+---
+ 
+# piirisimulaattori
+Piirisimulaattori on ohjelma, jonka avulla voidaan tutkia erilaisten virtapiirien toimintaa virtuaalisesti. Näin erialisia
+mittauksia voidaan tehdä rakentamatta varsinaista piiriä.
+
+Internetistä löytyy useit erilaisia piirisimulaattoreita, joita kannattaa kokeilla. Tällä kurssilla käytämme kuitenkin *Falstad
+cirucit silumator* nimistäpiirisimulaattoria, sillä se toimii suoraan selaimessa, eikä vaadi erillistä sisäänkirjautumista. 
+
+# Falstad piirisimulaattori
+## simulaation käynnistäminen
+Useimmiten kun avaat linkin simulaatioharjoitukseen. käynnistyy simulaattori automaattisesti. Kuitenkin, joskus voi olla tarpeen
+keskeyttää simulaatio, tai kokonaan uudelleenkäynnistää se. Painikkeet tähän löytyvät simulaatioikkunan oikeasta laidasta.
+
+## Komponenttien muokkaaminen
+Ensimmäisissä harjoituksissa ei vielä luoda omia virtapiirejä. Sensijaan valmiiden virtapiirien komponenttien arvoja muutetaan, ja
+piirin toimintaa tarkkaillaan.
+
+Komponenttien arvojen muokkaaminen tapahtuu klikkaamalla komponenttia hiiren oikealla painikkeella ja valitsemalla *edit*
+
+## Kerrannaissuureet
+Suuretn numeroiden kirjoittaminen ja lukeminen voi käydä työlääksi. Tämän takia myös elektroniikassa käytetään kerrannaissuureita.
+Tuttu kerrannaissuure on esimerkiksi kilometri (km), joka tarkoittaa tuhatta metriä, tai millimetri (mm), joka tarkoittaa metrin
+tuhannesosaa.
+
+### Kerrannaissuureiden pikataulukko, esimerkkinä metri
+Tässä taulukossa esiteltynä kerrannaissuureita, jotka ovat oleellisia sähkötekniikan ja elektroniikan kannalta.
+| kerrannaissure | kerroin | esimerkki (m) | metrinä |
+|---|---|---|---|
+| k (kilo) | 1000 (tuhat) | 1 km | 1000 m |
+| M (mega) | 1000 000 (miljoona) | 1 Mm | 1000 000 m |
+| G (giga) | 1000 000 000 (miljardi) | 1 Gm | 1000 000 000 m |
+| m (milli) | 0.001 (tuhannesosa) | 1 mm | 0.001 m |
+| u (micro) | 0.000001 (miljoonasosa) | 1 um | 0.000001 m |
+| n (nano) | 0.000000001 (miljardisosa) | 1 nm | 0.000000001 m |
+| p (pico) | 0.000000000001 (biljoonasosa) | 1 pm | 0.000000000001 m |
+
+# Komponentit
+## jännitelähde (paristo)
+
+<img src="/public/falstad_voltage.jpg" alt="Voltage source image" style="height: 100px; left: 0"/>
+**Valikko: Draw -> Inputs adn Sources -> Add Voltage Source (2-terminal)**
+
+Jännitellähteen jännite määritellään **Volteissa**. Jännitelähteen symbolissa pidempi viiva kuvastaa positiivista napaa, kun taas
+lyhyempi viiva kuvastaa negatiivista napaa. 
+
+## Vastus
+
+<img src="/public/falstad_resistor.jpg" alt="Resistor image" style="height: 100px; left: 0"/>
+**Valikko: Draw -> Add resistor**
+
+Vastuksen arvo määritellään **Ohmeissa**. Määritelmässä voi käyttää apuna kerrannaissuureita (yllä). Vastuksella ei ole
+määriteltyä toimintasuuntaa, joten sen toimii samalla tavalla kummin päin vain.
+
+## Kondensaattori
+
+<img src="/public/falstad_capacitor.jpg" alt="Capacitor image" style="height: 100px; left: 0"/>
+**Valikko: Draw -> Passive components -> Add capacitor**
+
+Kondensaattorin kapasitanssi määritellään Faradeissa.
