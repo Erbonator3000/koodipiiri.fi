@@ -33,6 +33,16 @@ export default defineConfig({
               },
             ],
           },
+          {
+            label: 'Mikro-ohjainlevyn ohjelmointia Grove Kitin kanssa',
+            link: '/grove-kit/exercises/led',
+            items: [
+              {
+                label: 'Harjoitukset',
+                autogenerate: { directory: '/grove-kit/exercises' },
+              },
+            ],
+          },
         ]),
       ],
     }),
