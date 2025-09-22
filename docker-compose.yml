@@ -1,0 +1,61 @@
+services:
+  dev:
+    image: node:22-alpine3.21
+    working_dir: /app
+    volumes: #Add only neccessary for security
+      - ./public:/app/public:ro
+      - ./src:/app/src:ro
+      - ./astro.config.mjs:/app/astro.config.mjs:ro
+      - ./package.json:/app/package.json:ro
+      - ./package-lock.json:/app/package-lock.json:ro
+      - node_modules_cache:/app/node_modules
+    ports:
+      - "4321:4321"
+    command: sh -c "npm ci && npm run dev -- --host"
+    profiles:
+      - dev
+
+  install:
+    image: node:22-alpine3.21
+    working_dir: /app
+    volumes: #Add only neccessary for security
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+      - node_modules_cache:/app/node_modules
+    command: sh -c "npm i"
+    profiles:
+      - install
+
+  build:
+    image: node:22-alpine3.21
+    working_dir: /app
+    volumes:
+      # Sources as read only
+      - ./public:/app/public:ro
+      - ./src:/app/src:ro
+      - ./astro.config.mjs:/app/astro.config.mjs:ro
+      - ./package.json:/app/package.json:ro
+      - ./package-lock.json:/app/package-lock.json:ro
+      - ./build:/app/build_out
+      - node_modules_cache:/app/node_modules
+    ports:
+      - "4321:4321"
+    command: sh -c "npm ci && npm run build && cp -r /app/dist/* /app/build_out"
+    profiles:
+      - build
+
+  audit:
+    image: node:22-alpine3.21
+    working_dir: /app
+    volumes:
+      - ./package.json:/app/package.json:ro
+      - ./package-lock.json:/app/package-lock.json:ro
+    ports:
+      - "4321:4321"
+    command: sh -c "npm ci && npm audit"
+    profiles:
+      - audit
+
+volumes:
+  node_modules_cache:
+
