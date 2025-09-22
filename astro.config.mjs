@@ -9,6 +9,16 @@ export default defineConfig({
     starlight({
       credits: true,
       title: 'Koodipiiri.fi',
+      locales: {
+        root: {
+          label: 'Suomi',
+          lang: 'fi',
+        },
+        en: {
+          label: 'English',
+          lang: 'en',
+        },
+      },
       plugins: [
         starlightSidebarTopics([
           {
