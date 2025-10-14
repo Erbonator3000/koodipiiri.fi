@@ -1,0 +1,83 @@
+---
+title: Sähkö, jännite ja virta
+sidebar:
+  order: 2
+---
+import { LinkCard } from '@astrojs/starlight/components';
+
+# Mitä sähkö oikein on?
+
+Kuten koulun fysiikan tai kemiantunneilta voi olla tuttua, kaikki aine ympärillämme koostuu atomeista. Atomit taas koostuvat
+protoneista, neutroneista ja elektroneista. Näistä protonit ja elektronit ovat **varautuneita hiukkasia**, eli niillä on joko
+positiivinen varaus (protonit) tai negatiivinen varaus (elektronit).
+
+[comment]: <> (Some kind of picture???)
+
+Sähkö on näiden positiivisten ja negatiivisten varausten välistä vuorovaikutusta.
+
+## Sähkön perusominaisuudet
+### Jännite
+Kun kaksi eri varauksellista varattua hiukkasta on etäällä toisistaan, vallitsee niiden välissä sähkökenttä. Vastakkaiset
+varaukset vetävät toisiaan puoleensa, kun taas samat varaukset haluavat olla kaukana toisistaan. Voit huomata tämän, jos hankaat
+ilmapalloa pitkiin hiuksiisi. Ilmapallo ja hiukset ovat varautuneet vastakkaisilla varauksilla, koska hankauksen seurauksena
+atomien elektroneja on siitrynyt hiuksista ilmapalloon. Tämän seurauksena hiukset haluavat takertua
+ilmapalloon. Yksittäiset huikset taas ovat nyt varautuneet samalla positiivisella varauksella joten ne hylkivät toisiaan ja
+nousevat pystyyn.
+
+:::note[Kokeile itse!]
+Hankaa täyteen puhallettua ilmapalloa pitkiin hiuksiin. Havainnoi seuraavia asioita.
+* Kuinka hiukset käyttäytyvät, kun ilmapallo tuodaan lähelle hiuksia?
+* Kuinka Hiukset käyttäytyvät, kun ilmapallo ei ole lähellä hiuksia?
+* Kuinka kaksi eri ilmapalloa, joita molempia on hangattu hiuksiin käyttäytyvät, kun ne tuodaan lähelle toisiaan?  
+:::
+
+Sitä, kuinka iso varauteinuusero kahden asian välillä on,kutsutaan jännitteeksi. Hiuksien ja ilmapallon kohdalla Jännite muodostuu
+hankaukseta. Sähkölaitteista tutumpi tapa tuottaa jännitettä on paristo. Paristossa jännitettä tuottaa kemiallinen reaktio. Sähköä
+voidaan tuottaa myös monella muulla tavalla, kuten magneeteilla ja valolla.
+
+Jännitettä mitattaessa puhutaan Volteista (V). Voltit ovat tuttuja esimerkiksi eri paristojen merkinnäistä. Tavallinen AA tai AAA
+sormiparisto tuottaa 1.5 voltin jännitteen, kun taas esimerkiksi palovaroittimissa käytettävä paristo tuottaa 9 voltin jännitteen.
+Älypuhelimissa olevat akut toimivat taas puolestaan noin 3.7 voltin jännitteellä, tosin jännite riippuu myös akun varaustasosta.
+
+### Virta
+Kun varatut hiukkaset lähtervät liikkeelle syntyy sähkövirtaa. Sähkövirran suuntaa kuvataan varauksen virtaamisena positiivisesta
+varauksesta negatiiviseen varaukseen. Näinollen, kun ilmapalloa hangataan hiuksiin, virtaa sähkö ilmapallosta hiuksiin.
+
+:::note[Nurinkurinen virran suunta.]
+Vaikka elektronit liikkuvat negatiivisesta navasta positiiviseen, sovittu sähkövirran suunta kulkee toiseen suuntaan. Tämä johtuu
+siitä, että sähkövirran suunta määriteltiin ennen elektronien löytämistä.
+:::
+
+### Johdin
+Virran syntymiseksi elektronit tarvitsevat reitin, jota pitkin kulkea varauksesta toiseen. Eri materiaalit antavat varauksille
+eritasoisia mahdollisuuksia liikkua lävitseen. Jotkin materiaalit, kuten metallit johtavat sähköä lävitseen hyvin. Tällaisia
+materiaaleja kutsutaan johtimiksi. Johtimissa on paljon elektroneja, jotka pääsevät liikkumaan ympäriinsä varsin vapaasti. Kun
+johtimen toiseen päähän työnnetään lisää elektroneja (negatiivinen varaus), tuuppivat toisiaan hylkivät elektinot toisiaan, ja
+mikäli johtimen toisessa päässä on reitti vähemmän elektroneja sisältävään paikkaan (positiivinen varaus), alkavat elektronit
+virrata sinne.
+
+:::note[Kokeile itse!]
+Tutki yleismittarin jatkuvuustestillä (contiunuity testi), mitkä materiaalit ovat hyviä johtimia. Yleismittari
+piippaa, mikäli sähkö pääsee esteettä kulkemaan testipisteiden välillä.
+:::
+
+Johtimien vastakohta ovat eristeet. Eristeet ovat materiaaleja, joiss ei ole vapaasti liikkuvia elektroneja, joten sähkö ei pääse
+liikkumaan eristeessä, Jos eristeeseen lisätään väkisin elektroneja, jäävät ne usein jumiin eristeen atomeihin, Näinollen eristeet
+voivat siis varautua sähkövarauksella, vaikka ne eivät virtaakkaan sähköä. Jos eristeen yli laitetaan riittävän suuri jännite,
+voivat sen atomeiss ollevat elektronit irrota jolloin sähkövirta on mahdollinen. Tätä kutsutaan ionisoitumiseksi, ja sähkövirta on
+usein hyvin suuri, ja saattaa näkyä jopa kipinänä. Eristeitä ovat esimerkiksi useimmat muovit, lasi, puhdas vesi ja ilma.
+
+Jatkuvan sähkövirran syntyyn tarvitaan siis yhtenäinen johdin kahden varauksen välille.
+
+[comment]: <> (Some kind of video of usin multimeter???)
+
+:::note[Kokeile itse!]
+Kokeile, saatko sähkövirran kulkemaan eristeessä. jos hankaat hiuksiasi pimeässä huoneessa keinokuituisella aluspaidalla, voit
+nähdä pieniä sähkökipinöitä. Näissä kipinöissä ilman molekyylit ovat ionisoituyneet suuren jännite-eron seurauksena, ja sähkö
+pääsee hetkellisesti virtaamaan eristeen läpi.
+:::
+
+## Bonusharjoitus: Vesi eristeenä?
+ TODO:
+
+
